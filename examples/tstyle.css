@@ -1,0 +1,21 @@
+.maintitle{
+	font-family: "Dancing Script";
+	color: yellow;
+	font-size: 5em;
+}
+#navigate{
+	background-color: orange;
+}
+#kangkong{
+	width: 720px;
+}
+.title{
+	font-family:"Baskervville";
+}
+.description{
+
+	color: black;
+}
+#about{
+	background-color: warning;
+}
