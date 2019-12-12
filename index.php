@@ -20,7 +20,7 @@
 
 <head>
   <meta charset="utf-8" />
-  <link rel="apple-touch-icon" sizes="76x76" href="logo.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="assets/img/logo.png">
   <link rel="icon" type="image/png" href="logo1.jpeg">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
@@ -167,7 +167,7 @@
 
   <div class="content" style="display: flex;">
     <div class="content_image">
-      <img src="frontlogo.png">
+      <img src="assets/img/frontlogo.png">
     </div>
     <div class="content_text">
       <h1 style="font-family: 'Dancing script'">How we started</h1>
@@ -187,7 +187,7 @@
                   <div class="row" style="justify-content: center;">
                       <div class="col-md-4">
                           <div class="team-player">
-                              <img src="./jess.jpg" alt="Thumbnail Image" class="rounded-circle img-fluid img-raised" height="160" width="160">
+                              <img src="assets/img/jess.jpg" alt="Thumbnail Image" class="rounded-circle img-fluid img-raised" height="160" width="160">
                               <h4 class="title">Jess Del Rosario</h4>
                               <p class="category text-primary">Web Designer & Developer</p>
                               <p class="description">Jess Del Rosario is a graduate of Business Administration from the University of Caloocan City and previously worked as a technical recruiter. He decided to shift careers after six months due to the frustration of not having to do what he really wanted to do.</p>
@@ -197,7 +197,7 @@
                       </div>
                       <div class="col-md-4">
                           <div class="team-player">
-                              <img src="./pau.jpg" alt="Thumbnail Image" class="rounded-circle img-fluid img-raised" height="160" width="160">
+                              <img src="assets/img/pau.jpg" alt="Thumbnail Image" class="rounded-circle img-fluid img-raised" height="160" width="160">
                               <h4 class="title">Pauline Bactad</h4>
                               <p class="category text-primary">Traditional&Digital Artist</p>
                               <p class="description">Pauline Bactad is a self-taught artist since she was young. She is a graduate of Fine Arts from the University of Santo Tomas and is currently a freelance graphic designer, traditional and digital artist.</p>
@@ -242,7 +242,7 @@
                     </div>
 
                     <div class="send-button">
-                        <a href="#pablo" class="btn btn-round btn-block btn-lg" style="background-image: url(yellowbg.jpeg); font-weight: bold; color: black;">Send Message</a>
+                        <a href="#pablo" class="btn btn-round btn-block btn-lg" style="background-image: url(assets/img/yellowbg.jpeg); font-weight: bold; color: black;">Send Message</a>
                     </div>
                 </div>
             </div>

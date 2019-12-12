@@ -1,26 +1,10 @@
-<!--
 
-=========================================================
-* Now UI Kit - v1.3.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/now-ui-kit
-* Copyright 2019 Creative Tim (http://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/now-ui-kit/blob/master/LICENSE.md)
-
-* Designed by www.invisionapp.com Coded by www.creative-tim.com
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
--->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8" />
-  <link rel="apple-touch-icon" sizes="76x76" href="logo.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="assets/img/logo.png">
   <link rel="icon" type="image/png" href="logo1.jpeg">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
@@ -120,7 +104,6 @@
                 <h4 class="card-title">
                   <a href="#">Item One</a>
                 </h4>
-                <h5>$24.99</h5>
                 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
               </div>
               <div class="card-footer">
@@ -136,7 +119,6 @@
                 <h4 class="card-title">
                   <a href="#">Item Two</a>
                 </h4>
-                <h5>$24.99</h5>
                 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
               </div>
               <div class="card-footer">
@@ -152,7 +134,6 @@
                 <h4 class="card-title">
                   <a href="#">Item Three</a>
                 </h4>
-                <h5>$24.99</h5>
                 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
               </div>
               <div class="card-footer">
@@ -168,7 +149,6 @@
                 <h4 class="card-title">
                   <a href="#">Item Four</a>
                 </h4>
-                <h5>$24.99</h5>
                 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
               </div>
               <div class="card-footer">
@@ -184,7 +164,6 @@
                 <h4 class="card-title">
                   <a href="#">Item Five</a>
                 </h4>
-                <h5>$24.99</h5>
                 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
               </div>
               <div class="card-footer">
@@ -200,7 +179,6 @@
                 <h4 class="card-title">
                   <a href="#">Item Six</a>
                 </h4>
-                <h5>$24.99</h5>
                 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
               </div>
               <div class="card-footer">
@@ -242,7 +220,7 @@
                     </div>
 
                     <div class="send-button">
-                        <a href="#pablo" class="btn btn-round btn-block btn-lg" style="background-image: url(yellowbg.jpeg); font-weight: bold; color: black;">Send Message</a>
+                        <a href="#pablo" class="btn btn-round btn-block btn-lg" style="background-image: url(assets/img/yellowbg.jpeg); font-weight: bold; color: black;">Send Message</a>
                     </div>
                 </div>
             </div>
