@@ -4,7 +4,7 @@
 
   <div class="wrapper">
     <div class="page-header clear-filter">
-      <div class="page-header-image" data-parallax="true" style="background-image:url('bg.jpg');">
+      <div class="page-header-image" data-parallax="true" style="background-image:url('assets/img/bg.jpg');">
       </div>
       <div class="container">
         <div class="content-center brand">
