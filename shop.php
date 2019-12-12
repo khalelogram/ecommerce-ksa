@@ -1,5 +1,6 @@
 <?php
 include 'db.php';
+include 'readmoreFunction.php';
 
   $query = "SELECT * FROM products";
 
@@ -35,6 +36,7 @@ include 'db.php';
     .content-center span{
       display: none;
     }
+
   </style>
 
 </head>
@@ -105,100 +107,135 @@ include 'db.php';
   <!-- END HEADER -->
   
   <!-- SHOPPING SECTION -->
-
-<div class="row" style="padding: 100px;">
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <img style="width: 363px; height: 207px;" class="card-img-top"  src="assets/img/personalized_wave.jpg"  alt="">
-              <div class="card-body">
-                <h4 class="card-title">
-                  <h3>Shirts</h3>
-                </h4>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-              </div>
-              <div class="d-flex justify-content-center card-footer">
-                <input class="btn btn-warning btn-lg d-flex" value="See More" type="submit" name="Shirts">
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <img style="width: 363px; height: 207px;" class="card-img-top" src="assets/img/shoes_starrynight.jpg" alt="">
-              <div class="card-body">
-                <h4 class="card-title">
-                  <h3>Shoes</h3>
-                </h4>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
-              </div>
-              <div class="d-flex justify-content-center card-footer">
-                <input class="btn btn-warning btn-lg d-flex" value="See More" type="submit" name="Shirts">
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <img style="width: 363px; height: 207px;" class="card-img-top" src="assets/img/hat_wavexstarrynight1.jpg" alt="">
-              <div class="card-body">
-                <h4 class="card-title">
-                  <h3>Hats</h3>
-                </h4>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-              </div>
-              <div class="d-flex justify-content-center card-footer">
-                <input class="btn btn-warning btn-lg d-flex" value="See More" type="submit" name="Shirts">
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <img style="width: 363px; height: 207px;" class="card-img-top" src="assets/img/pants_starrynight.jpg" alt="">
-              <div class="card-body">
-                <h4 class="card-title">
-                  <h3>Pants</h3>
-                </h4>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-              </div>
-              <div class="d-flex justify-content-center card-footer">
-                <input class="btn btn-warning btn-lg d-flex" value="See More" type="submit" name="Shirts">
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <img style="width: 363px; height: 207px;" class="card-img-top" src="assets/img/mural_starrynight.jpg" alt="">
-                <div class="card-body">
-                <h4 class="card-title">
-                  <h3>Mural Services</h3>
-                </h4>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
-              </div>
-              <div class="d-flex justify-content-center align-items-end card-footer">
-                <input class="btn btn-warning btn-lg d-flex" value="See More" type="submit" name="Shirts">
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <img style="width: 363px; height: 207px;" class="card-img-top" src="assets/img/personalized_oilpaint.jpg" alt="">
-              <div class="card-body">
-                <h4 class="card-title">
-                  <h3>Others</h3>
-                </h4>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-              </div>
-              <div class="d-flex justify-content-center card-footer">
-                <input class="btn btn-warning btn-lg" value="See More" type="submit" name="Shirts">
-              </div>
-            </div>
-          </div>
+<div class="d-flex flex-wrap ">
+  <div class="d-flex flex-column align-items-start col-lg-4 col-md-6 col-sm-12" style="padding: 20px;">
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card h-100" style="width: 363px;">
+        <img style="width: 363px; height: 207px;" class="card-img-top"  src="assets/img/personalized_wave.jpg"  alt="">
+        <div class="card-body">
+          <h4 class="card-title">
+            <h3>Shirts</h3>
+          </h4>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. <span id="dots">...</span><span id="more">Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <button onclick="readMore()" id="myBtn">Read more</button>
         </div>
+        <div class="d-flex justify-content-center card-footer">
+          <input class="btn btn-warning btn-lg d-flex" value="See More" type="submit" name="Shirts">
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card h-100" style="width: 363px;">
+        <img style="width: 363px; height: 207px;" class="card-img-top" src="assets/img/shoes_starrynight.jpg" alt="">
+        <div class="card-body">
+          <h4 class="card-title">
+            <h3>Shoes</h3>
+          </h4>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. <span id="dots1">...</span><span id="more1">Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <button onclick="readMore1()" id="myBtn1">Read more</button>
+        </div>
+        <div class="d-flex justify-content-center card-footer">
+          <input class="btn btn-warning btn-lg d-flex" value="See More" type="submit" name="Shirts">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex flex-column align-items-start col-lg-4 col-md-6 col-sm-12" style="padding: 20px;">
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card h-100" style="width: 363px;">
+        <img style="width: 363px; height: 207px;" class="card-img-top" src="assets/img/hat_wavexstarrynight1.jpg" alt="">
+        <div class="card-body">
+          <h4 class="card-title">
+            <h3>Hats</h3>
+          </h4>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. <span id="dots2">...</span><span id="more2">Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <button onclick="readMore2()" id="myBtn2">Read more</button>
+        </div>
+        <div class="d-flex justify-content-center card-footer">
+          <input class="btn btn-warning btn-lg d-flex" value="See More" type="submit" name="Shirts">
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card h-100" style="width: 363px;">
+        <img style="width: 363px; height: 207px;" class="card-img-top" src="assets/img/pants_starrynight.jpg" alt="">
+        <div class="card-body">
+          <h4 class="card-title">
+            <h3>Pants</h3>
+          </h4>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. <span id="dots3">...</span><span id="more3">Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <button onclick="readMore3()" id="myBtn3">Read more</button>
+        </div>
+        <div class="d-flex justify-content-center card-footer">
+          <input class="btn btn-warning btn-lg d-flex" value="See More" type="submit" name="Shirts">
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <div class="d-flex flex-column align-items-start col-lg-4 col-md-6 col-sm-12" style="padding-top: 20px; padding-right: 40px; padding-left: 20px;">
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card h-100" style="width: 363px;">
+        <img style="width: 363px; height: 207px;" class="card-img-top" src="assets/img/mural_starrynight.jpg" alt="">
+          <div class="card-body">
+          <h4 class="card-title">
+            <h3>Mural Services</h3>
+          </h4>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. <span id="dots4">...</span><span id="more4">Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <button onclick="readMore4()" id="myBtn4">Read more</button>
+        </div>
+        <div class="d-flex justify-content-center align-items-end card-footer">
+          <input class="btn btn-warning btn-lg d-flex" value="See More" type="submit" name="Shirts">
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card h-100" style="width: 363px;">
+        <img style="width: 363px; height: 207px;"class="card-img-top" src="assets/img/personalized_oilpaint.jpg" alt="">
+        <div class="card-body">
+          <h4 class="card-title">
+            <h3>Others</h3>
+          </h4>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. <span id="dots5">...</span><span id="more5">Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <button onclick="readMore5()" id="myBtn5">Read more</button>
+        </div>
+        <div class="d-flex justify-content-center card-footer">
+          <input class="btn btn-warning btn-lg" value="See More" type="submit" name="Shirts">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- CONTACT SECTION -->
   <div class="section section-contact-us text-center">
@@ -237,6 +274,7 @@ include 'db.php';
             </div>
         </div>
     </div>
+</div>
 <!-- END CONTACT SECTION -->
 
 <!-- FOOTER SECTION -->
@@ -318,8 +356,10 @@ include 'db.php';
     smartBackspace: true, // this is a default
     loop: true
     });
-
+    
+    
   </script>
+
 </body>
 
 </html>

@@ -26,7 +26,7 @@
  * Copyright 2012-2013 Mattia Larentis
  * http://www.apache.org/licenses/LICENSE-2.0
  */
-
+  
 .bootstrap-switch {
   display: inline-block;
   direction: ltr;
@@ -7193,6 +7193,24 @@ img {
   flex-direction: column;
   text-align: center;
   padding-top: 50px;
+}
+#more {
+  display: none;
+}
+#more1 {
+  display: none;
+}
+#more2 {
+  display: none;
+}
+#more3 {
+  display: none;
+}
+#more4 {
+  display: none;
+}
+#more5 {
+  display: none;
 }
 
 @media screen and (min-width: 768px) {
