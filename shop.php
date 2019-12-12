@@ -1,11 +1,23 @@
+<?php
+include 'db.php';
+include 'readmoreFunction.php';
 
+  $query = "SELECT * FROM products";
+
+  $result = mysqli_query($dbconnection, $query);
+
+  if(!$result)
+  {
+    die(mysqli_error());
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8" />
   <link rel="apple-touch-icon" sizes="76x76" href="assets/img/logo.png">
-  <link rel="icon" type="image/png" href="logo1.jpeg">
+  <link rel="icon" type="image/png" href="assets/img/logo1.jpeg">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
     Heart Made
@@ -24,6 +36,7 @@
     .content-center span{
       display: none;
     }
+
   </style>
 
 </head>
@@ -34,7 +47,7 @@
     <div class="container">
       <div class="navbar-translate">
         <a class="navbar-brand" href="index.php" rel="tooltip" title="Desgined & Developed by Jess Del Rosario" data-placement="bottom">
-          <img src="logo1.jpeg" alt="logo" height="50px" width="50px">
+          <img src="assets/img/logo1.jpeg" alt="logo" height="50px" width="50px">
         </a>
         <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-bar top-bar"></span>
@@ -94,100 +107,135 @@
   <!-- END HEADER -->
   
   <!-- SHOPPING SECTION -->
-
-<div class="row" style="padding: 15px;">
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">Item One</a>
-                </h4>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">Item Two</a>
-                </h4>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">Item Three</a>
-                </h4>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">Item Four</a>
-                </h4>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">Item Five</a>
-                </h4>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">Item Six</a>
-                </h4>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-              </div>
-            </div>
-          </div>
+<div class="d-flex flex-wrap ">
+  <div class="d-flex flex-column align-items-start col-lg-4 col-md-6 col-sm-12" style="padding: 20px;">
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card h-100" style="width: 363px;">
+        <img style="width: 363px; height: 207px;" class="card-img-top"  src="assets/img/personalized_wave.jpg"  alt="">
+        <div class="card-body">
+          <h4 class="card-title">
+            <h3>Shirts</h3>
+          </h4>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. <span id="dots">...</span><span id="more">Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <button onclick="readMore()" id="myBtn">Read more</button>
         </div>
+        <div class="d-flex justify-content-center card-footer">
+          <input class="btn btn-warning btn-lg d-flex" value="See More" type="submit" name="Shirts">
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card h-100" style="width: 363px;">
+        <img style="width: 363px; height: 207px;" class="card-img-top" src="assets/img/shoes_starrynight.jpg" alt="">
+        <div class="card-body">
+          <h4 class="card-title">
+            <h3>Shoes</h3>
+          </h4>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. <span id="dots1">...</span><span id="more1">Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <button onclick="readMore1()" id="myBtn1">Read more</button>
+        </div>
+        <div class="d-flex justify-content-center card-footer">
+          <input class="btn btn-warning btn-lg d-flex" value="See More" type="submit" name="Shirts">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex flex-column align-items-start col-lg-4 col-md-6 col-sm-12" style="padding: 20px;">
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card h-100" style="width: 363px;">
+        <img style="width: 363px; height: 207px;" class="card-img-top" src="assets/img/hat_wavexstarrynight1.jpg" alt="">
+        <div class="card-body">
+          <h4 class="card-title">
+            <h3>Hats</h3>
+          </h4>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. <span id="dots2">...</span><span id="more2">Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <button onclick="readMore2()" id="myBtn2">Read more</button>
+        </div>
+        <div class="d-flex justify-content-center card-footer">
+          <input class="btn btn-warning btn-lg d-flex" value="See More" type="submit" name="Shirts">
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card h-100" style="width: 363px;">
+        <img style="width: 363px; height: 207px;" class="card-img-top" src="assets/img/pants_starrynight.jpg" alt="">
+        <div class="card-body">
+          <h4 class="card-title">
+            <h3>Pants</h3>
+          </h4>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. <span id="dots3">...</span><span id="more3">Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <button onclick="readMore3()" id="myBtn3">Read more</button>
+        </div>
+        <div class="d-flex justify-content-center card-footer">
+          <input class="btn btn-warning btn-lg d-flex" value="See More" type="submit" name="Shirts">
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <div class="d-flex flex-column align-items-start col-lg-4 col-md-6 col-sm-12" style="padding-top: 20px; padding-right: 40px; padding-left: 20px;">
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card h-100" style="width: 363px;">
+        <img style="width: 363px; height: 207px;" class="card-img-top" src="assets/img/mural_starrynight.jpg" alt="">
+          <div class="card-body">
+          <h4 class="card-title">
+            <h3>Mural Services</h3>
+          </h4>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. <span id="dots4">...</span><span id="more4">Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <button onclick="readMore4()" id="myBtn4">Read more</button>
+        </div>
+        <div class="d-flex justify-content-center align-items-end card-footer">
+          <input class="btn btn-warning btn-lg d-flex" value="See More" type="submit" name="Shirts">
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card h-100" style="width: 363px;">
+        <img style="width: 363px; height: 207px;"class="card-img-top" src="assets/img/personalized_oilpaint.jpg" alt="">
+        <div class="card-body">
+          <h4 class="card-title">
+            <h3>Others</h3>
+          </h4>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. <span id="dots5">...</span><span id="more5">Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <button onclick="readMore5()" id="myBtn5">Read more</button>
+        </div>
+        <div class="d-flex justify-content-center card-footer">
+          <input class="btn btn-warning btn-lg" value="See More" type="submit" name="Shirts">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- CONTACT SECTION -->
   <div class="section section-contact-us text-center">
@@ -226,6 +274,7 @@
             </div>
         </div>
     </div>
+</div>
 <!-- END CONTACT SECTION -->
 
 <!-- FOOTER SECTION -->
@@ -307,8 +356,10 @@
     smartBackspace: true, // this is a default
     loop: true
     });
-
+    
+    
   </script>
+
 </body>
 
 </html>
