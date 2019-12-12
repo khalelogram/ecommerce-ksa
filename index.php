@@ -1,27 +1,11 @@
-<!--
 
-=========================================================
-* Now UI Kit - v1.3.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/now-ui-kit
-* Copyright 2019 Creative Tim (http://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/now-ui-kit/blob/master/LICENSE.md)
-
-* Designed by www.invisionapp.com Coded by www.creative-tim.com
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
--->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8" />
   <link rel="apple-touch-icon" sizes="76x76" href="assets/img/logo.png">
-  <link rel="icon" type="image/png" href="logo1.jpeg">
+  <link rel="icon" type="image/png" href="assets/img/logo1.jpeg">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
     Heart Made
@@ -49,7 +33,7 @@
     <div class="container">
       <div class="navbar-translate">
         <a class="navbar-brand" href="#" rel="tooltip" title="Desgined & Developed by Jess Del Rosario" data-placement="bottom">
-          <img src="logo1.jpeg" alt="logo" height="50px" width="50px">
+          <img src="assets/img/logo1.jpeg" alt="logo" height="50px" width="50px">
         </a>
         <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-bar top-bar"></span>
