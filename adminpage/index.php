@@ -19,9 +19,9 @@
             <small class="text-muted">Version 2.1</small>
         </h1>
         
-        <div class = "header">
+        <!-- <div class = "header">
             <h2>Home Page</h2>
-        </div>
+        </div> -->
         <div class = "content">
             <?php if(isset($_SESSION['success'])): ?> 
                 <div class="error success">
@@ -33,15 +33,73 @@
                     </h3>
                 </div>
             <?php endif ?>
-
-            <?php if (isset($_SESSION['username'])): ?>
-                <p>Welcome <strong><?php echo $_SESSION['username'];?></strong></p>
-                <p><a href="registration/index.php?logout='1'" style="color:red;">Log out</a></p>
-            <?php endif  ?>
         </div>
         
         <div class="card">
-            <h4 class="card-header">Admin Profile</h4>
+            <h4 class="card-header">Admin Profile 
+                <div><p>
+                    <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#exampleModal">
+                    Add Account
+                    </button>
+                    <input type="submit" type="button" class="btn btn-sm btn-info" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
+                    <a href="registration/index.php?logout='1'" class="btn btn-sm btn-info" >Log out</a>
+                    </p>
+                </div>
+
+                <!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Register new Account</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        <div class="container">
+        <div class = "header">
+            <!-- <h4>Register</h4> -->
+        </div>
+            <form method="post" action="">
+                <!-- display validation error -->
+                <?php include('errors.php');?>
+                <div class="input-group">
+                    <label>Username</label>
+                    <input type="text" name="username" value="<?php echo $username;?>">
+                </div>
+                <div class="input-group">
+                    <label>Email</label>
+                    <input type="text" name="email" value="<?php echo $email;?>">
+                </div>
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" name="password_1">
+                </div>
+                <div class="input-group">
+                    <label>Confirm Password</label>
+                    <input type="password" name="password_2">
+                </div>
+                <div class="input-group">
+                    <button type="submit" name="register" class="btn btn-primary btn-sm">Register</button>
+                </div>
+                
+            </form>
+         </div>
+        
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+            </h4>
             <div class="card-body">
                 <ul>
                    <div class="container emp-profile">
@@ -59,7 +117,9 @@
                     <div class="col-md-6">
                         <div class="profile-head">
                                     <h5>
-                                        Admin Name
+                                    <?php if (isset($_SESSION['username'])): ?>
+                                    <p>Welcome !!<br> <strong><?php echo $_SESSION['username'];?></strong></p>
+                                    <?php endif  ?>
                                     </h5>
                                     <h6>
                                         Person Position
@@ -75,9 +135,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-md-2">
-                        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
-                    </div>
+                    
                 </div>
                 <div class="row">
                     <div class="col-md-4">

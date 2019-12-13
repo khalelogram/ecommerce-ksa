@@ -1,3 +1,7 @@
+<?php include('server.php');?>
+<?php include('errors.php');?>
+
+
   <nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="400" style="background-color: #716D6D;">
     <div class="container">
       <div class="navbar-translate">
@@ -12,6 +16,32 @@
       </div>
       <div class="collapse navbar-collapse justify-content-end" id="navigation" data-nav-image="./assets/img/blurred-image-1.jpg">
         <ul class="navbar-nav">
+
+<!-- LOG IN -->
+          <div class = "header">
+              <h4><?php if (isset($_SESSION['username'])): ?>
+                    <p>Welcome <strong><?php echo $_SESSION['username'];?></strong></p>
+                    <p><a href="index.php?logout='1'" style="color:red;">Log out</a></p>
+                  <?php endif  ?>
+                  </h4>
+                </div>
+                <div class = "content">
+                  <?php if(isset($_SESSION['success'])): ?> 
+                    <div class="error success">
+                      <h3>
+                        <?php
+                          echo $_SESSION['success'];
+                          unset ($_SESSION['success']);
+                        ?>
+                      </h3>
+                    </div>
+                  <?php endif ?>
+
+                  
+                    
+            </div>
+<!-- LOG IN -->
+
           <li class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink1" data-toggle="dropdown">
               <i class="now-ui-icons design_app"></i>
@@ -109,6 +139,30 @@
             Username: <input type="text" name="username" placeholder="Username">
             Password: <input type="password" name="password" placeholder="***********">
           </form>
+
+            <div class="container">
+              <div class = "header">
+                <h2>Login</h2>
+              </div>
+                <form method="post" action="index.php">
+                  <!-- display validation error -->
+                  <?php include('adminpage/registration/errors.php');?>
+                  <div class="input-group">
+                    <label>Username</label>
+                    <input type="text" name="username">
+                  </div>
+                  <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" name="password">
+                  </div> 
+                  <div class="input-group">
+                    <button type="submit" name="login" class="btn btn-primary btn-sm">Login</button>
+                  </div>
+                  <!-- <p>Not yet a member?<a href="register.php">Sign up</a></p> -->
+                 </form>
+              </div>
+    
+    </div>
           <p class="text-center">Not yet a member? <a href="" data-toggle="modal" data-target="#signupModal">Sign up here.</a></p>
         </div>
         <div class="modal-footer">
@@ -141,6 +195,41 @@
               <option>Other</option>
             </select>
           </form>
+
+
+<!-- SIGN UP -->
+              <div class="container">
+                  <div class = "header">
+                    <h4>Register</h4>
+                       </div>
+                    <form method="post" action="index.php">
+                      <!-- display validation error -->
+                      <?php include('adminpage/registration/errors.php');?>
+                      <div class="input-group">
+                        <label>Username</label>
+                        <input type="text" name="username" value="<?php echo $username;?>">
+                      </div>
+                      <div class="input-group">
+                        <label>Email</label>
+                        <input type="text" name="email" value="<?php echo $email;?>">
+                      </div>
+                      <div class="input-group">
+                        <label>Password</label>
+                        <input type="password" name="password_1">
+                      </div>
+                      <div class="input-group">
+                        <label>Confirm Password</label>
+                        <input type="password" name="password_2">
+                      </div>
+                      <div class="input-group">
+                        <button type="submit" name="register" class="btn btn-primary btn-sm">Register</button>
+                      </div>
+                      <p><a href="index.php" class="btn btn-info btn-sm" >Sign in</a></p>   
+                    </form>
+                </div>
+<!-- SIGN UP -->
+
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
