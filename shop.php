@@ -87,7 +87,7 @@ include 'readmoreFunction.php';
           <button onclick="readMore1()" id="myBtn1">Read more</button>
         </div>
         <div class="d-flex justify-content-center card-footer">
-          <input class="btn btn-warning btn-lg d-flex" value="See More" type="submit" name="Shirts">
+          <a href="shoes.php"><input class="btn btn-warning btn-lg d-flex" value="See More" type="submit" name="Shirts"></a>
         </div>
       </div>
     </div>
@@ -109,7 +109,7 @@ include 'readmoreFunction.php';
           <button onclick="readMore2()" id="myBtn2">Read more</button>
         </div>
         <div class="d-flex justify-content-center card-footer">
-          <input class="btn btn-warning btn-lg d-flex" value="See More" type="submit" name="Shirts">
+          <a href="hats.php"><input class="btn btn-warning btn-lg d-flex" value="See More" type="submit" name="Shirts"></a>
         </div>
       </div>
     </div>
@@ -152,7 +152,7 @@ include 'readmoreFunction.php';
           <button onclick="readMore4()" id="myBtn4">Read more</button>
         </div>
         <div class="d-flex justify-content-center align-items-end card-footer">
-          <input class="btn btn-warning btn-lg d-flex" value="See More" type="submit" name="Shirts">
+          <a href="murals.php"><input class="btn btn-warning btn-lg d-flex" value="See More" type="submit" name="Shirts"></a>
         </div>
       </div>
     </div>
@@ -172,7 +172,7 @@ include 'readmoreFunction.php';
           <button onclick="readMore5()" id="myBtn5">Read more</button>
         </div>
         <div class="d-flex justify-content-center card-footer">
-          <input class="btn btn-warning btn-lg" value="See More" type="submit" name="Shirts">
+          <a href="others.php"><input class="btn btn-warning btn-lg" value="See More" type="submit" name="Shirts"></a>
         </div>
       </div>
     </div>
