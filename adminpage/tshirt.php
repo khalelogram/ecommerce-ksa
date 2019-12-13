@@ -1,4 +1,12 @@
-<?php include('inc/header.php'); ?>
+<?php 
+
+include('inc/header.php'); 
+include 'inc/db.php';
+
+$tshirt = "SELECT * FROM `products` WHERE `prod_cat` = 'tshirt'";
+$result2 = mysqli_query($dbconnection, $tshirt);
+
+?>
 
 
 <div class="container-fluid p-0">
@@ -23,24 +31,18 @@
                     <div class="card" style="width: 18rem;">
                         <img class="card-img-top" src="..." alt="Card image cap">
                         <div class="card-body">
-                          <h5 class="card-title">T-SHIRT 1</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                          <p class="card-title"><?php
+                             while ($row = mysqli_fetch_array($result2)) {
+                                  echo "<h5>".$row['prod_name']."</h5>";?></p>
+                          <p class="card-text"><?php echo $row['prod_desc'];?></p>
                           <a href="#" class="btn btn-outline-info btn-sm">Edit Product</a>
                         </div>
                       </div>
                     <div class="card" style="width: 18rem;">
                         <img class="card-img-top" src="..." alt="Card image cap">
                         <div class="card-body">
-                          <h5 class="card-title">T-SHIRT 2</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <a href="#" class="btn btn-outline-info btn-sm">Edit Product</a>
-                        </div>
-                      </div>
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="..." alt="Card image cap">
-                        <div class="card-body">
-                          <h5 class="card-title">T-SHIRT 3</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                          <p class="card-title"><p>
+                          <p class="card-text"><?php } ?></p>
                           <a href="#" class="btn btn-outline-info btn-sm">Edit Product</a>
                         </div>
                       </div>
@@ -82,18 +84,33 @@
 
         <form>
           <div class="form-group">
-            <h4><label for="exampleFormControlInput1">Title</label></h4>
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Title of Product">
+            <h4><label for="exampleFormControlInput1">Product Name</label></h4>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Product Name">
           </div>
           
           <div class="form-group">
-            <h4><label for="exampleFormControlTextarea1">Description of Product</label></h4>
+            <h4><label for="exampleFormControlTextarea1">Description</label></h4>
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Enter Item Description"></textarea>
           </div>
 
           <div class="form-group">
+            <h4><label for="exampleFormControlInput1">Category</label></h4>
+            <select name="catergory">
+              <option value="tshirt">T-shirt</option>
+              <option value="pants">Pants</option>
+              <option value="hats">Hats</option>
+              <option value="shoes">Shoes</option>
+              </select>
+          </div>
+
+          <div class="form-group">
             <h4><label for="exampleFormControlInput1">Price</label></h4>
-            <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Enter Price">
+            <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Enter Price" name="price">
+          </div>
+
+          <div class="form-group">
+            <h4><label for="exampleFormControlInput1">Quantity</label></h4>
+            <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Enter Quantity" name="quantity">
           </div>
 
         <div class="form-check">
