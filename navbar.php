@@ -33,29 +33,17 @@
               <p>Contact Us</p>
             </a>
           </li>
-
+          
           <li class="nav-item">
-            <a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/HeartmadeP" target="_blank">
-              <i class="fab fa-twitter"></i>
-              <p class="d-lg-none d-xl-none">Twitter</p>
-            </a>
+            <a class="nav-link" data-toggle="modal" data-target="#loginModal" style="cursor: pointer;">
+                <i class="now-ui-icons business_badge"></i> Log In
+              </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="https://www.facebook.com/HeartMade.PB" target="_blank">
-              <i class="fab fa-facebook-square"></i>
-              <p class="d-lg-none d-xl-none">Facebook</p>
+          <li class="nav-item" style="cursor: pointer;">
+            <a class="nav-link">
+              <i class="now-ui-icons shopping_cart-simple"></i>
+              <p>Orders</p>
             </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" rel="tooltip" title="Follow us on Instagram" data-placement="bottom" href="https://www.instagram.com/heart.made.pb" target="_blank">
-              <i class="fab fa-instagram"></i>
-              <p class="d-lg-none d-xl-none">Instagram</p>
-            </a>
-          </li>
-          <li>
-            <button class="btn btn-warning" data-toggle="modal" data-target="#loginModal">
-              Log in
-            </button>
           </li>
         </ul>
       </div>
@@ -95,6 +83,7 @@
       </div>
     </div>
   </div>
+  <!-- LOG IN FORM -->
   <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -118,6 +107,8 @@
       </div>
     </div>
   </div>
+  <!-- END LOG IN FORM -->
+  <!-- SIGN UP FORM -->
   <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -129,17 +120,13 @@
         </div>
         <div class="modal-body">
           <form method="post" style="display: flex; flex-direction: column;">
-            Name:<input id="inputName" type="text" placeholder="Your full name here...">
+            First Name:<input id="inputName" type="text" name="firstName" placeholder="Your first name here...">
+            Last Name:<input type="text" name="lastName" placeholder="Your last name here...">
             Username: <input type="text" name="username" placeholder="Username">
             Password: <input type="password" name="password" placeholder="***********">
             Email:<input id="inputEmail" type="Email" placeholder="@domain.com">
             Contact Number: <input id="inputNumber" type="Number" placeholder="09*********">
-            Select Gender<select>
-              <option selected="selected" hidden="">Gender</option>
-              <option>Male</option>
-              <option>Female</option>
-              <option>Other</option>
-            </select>
+            Address: <input type="text" name="address" placeholder="Address">
           </form>
         </div>
         <div class="modal-footer">
@@ -149,6 +136,7 @@
       </div>
     </div>
   </div>
+  <!-- END SIGN UP FORM -->
 
 
   <script>
