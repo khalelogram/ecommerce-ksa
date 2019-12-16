@@ -1,5 +1,29 @@
-<?php include('inc/header.php'); ?>
+<?php 
 
+include('inc/header.php'); 
+include 'db.php';
+include ('inc/functions.php');
+
+$pants = "SELECT * FROM `products` WHERE `prod_cat` = 'pants'";
+$result2 = mysqli_query($dbconnection, $pants);
+$valid = false;
+$msg = "";
+
+if(isset($_POST['submit'])){
+  $msg = createProduct();
+  if(strlen($msg) > 0){
+    $valid = true;
+  }else{
+    $valid = false;
+}
+if(isset($_GET['edit'])){
+    $id = $_GET['edit'];
+    $rec = mysqli_query($db, "SELECT * FROM products WHERE prod_id=$id");
+    $record = mysqli_fetch_array($rec);
+    $id = $record['prod_id'];
+  }
+}
+?>
 
 <div class="container-fluid p-0">
 <!-- Bootstrap row -->
@@ -23,28 +47,24 @@
                     <div class="card" style="width: 18rem;">
                         <img class="card-img-top" src="..." alt="Card image cap">
                         <div class="card-body">
-                          <h5 class="card-title">PANTS 1</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <a href="#" class="btn btn-outline-info btn-sm">Edit Product</a>
-                          <button type="button" class="btn btn-sm btn-outline-danger">Delete</button>
+                          <p class="card-title">
+                                 <?php while ($row = mysqli_fetch_array($result2)): ?>
+                                 <?php echo "<h5>".$row['prod_name']."</h5>";?></p>
+                                  <p class="card-text">Product Code: <?php echo $row['prod_id'];?></p>
+                                  <p class="card-text"><?php echo $row['prod_desc'];?></p>
+                                  <p class="card-text">PHP <?php echo $row['prod_price'];?></p>
+                                  <p class="card-text">Quantity:<?php echo $row['prod_quantity'];?></p>
+                                  <div class="row d-flex justify-content-between"><a class="btn btn-primary" href="#collapseTwo?edit=<?php echo $row['prod_id'];?>">Edit Product</a>
+                                  <a class="btn btn-primary" href="delete.php?del=<?php echo $row['prod_id'];?>">Remove Product</a></div>
+                                  <p class="card-text"><?php endwhile; ?></p>
+                                  
                         </div>
                       </div>
                     <div class="card" style="width: 18rem;">
                         <img class="card-img-top" src="..." alt="Card image cap">
                         <div class="card-body">
-                          <h5 class="card-title">PANTS 2</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <a href="#" class="btn btn-outline-info btn-sm">Edit Product</a>
-                          <button type="button" class="btn btn-sm btn-outline-danger">Delete</button>
-                        </div>
-                      </div>
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="..." alt="Card image cap">
-                        <div class="card-body">
-                          <h5 class="card-title">PANTS 3</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <a href="#" class="btn btn-outline-info btn-sm">Edit Product</a>
-                          <button type="button" class="btn btn-sm btn-outline-danger">Delete</button>
+                          <p class="card-title"><p>
+                          
                         </div>
                       </div>
               </div>
@@ -80,14 +100,6 @@
                   </div>
                 </form>
           </div>
-
-            <select>
-              <option selected="selected" hidden="">Choose Item</option>
-              <option>tshirt</option>
-              <option>pants</option>
-              <option>hats</option>
-              <option>shoes</option>
-            </select>
 
         <form>
           <div class="form-group">
