@@ -7,6 +7,7 @@
 	$prodcat = "";
 	$prodprice = "";
 	$prodquant = "";
+	$image = "";
 	$prodid = 0;
 	$edit_state = false;
 
@@ -20,13 +21,17 @@
 		$prodcat = $_POST['prodcat'];
 		$prodprice = $_POST['prodprice'];
 		$prodquant = $_POST['prodquant'];
+	  	$image = $_FILES['image']['name'];
+		$target = "shirts-web/".basename($image);
 
-		$query = "INSERT INTO `products`(`prod_name`, `prod_cat`, `prod_price`, `prod_desc`, `prod_quantity`) VALUES ('$prodname','$prodcat','$prodprice','$proddesc','$prodquant')";
+		if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
+
+		$query = "INSERT INTO `products`(`prod_name`, `prod_cat`, `prod_price`, `prod_desc`, `prod_quantity`,`prod_img`) VALUES ('$prodname','$prodcat','$prodprice','$proddesc','$prodquant','$image')";
 		mysqli_query($db, $query);
 		$_SESSION['msg'] = "Product Added";
 		header('location: tshirt.php');
 	}
-
+	}
 	// == DELETE
 
 	if(isset($_GET['del'])){
@@ -46,12 +51,16 @@
 		$prodquant = mysqli_real_escape_string($db,$_POST['prodquant']);
 		$prodprice = mysqli_real_escape_string($db,$_POST['prodprice']);
 		$prodid = mysqli_real_escape_string($db,$_POST['prodid']);
+		$image = $_FILES['image']['name'];
+		$target = "shirts-web/".basename($image);
 
-		mysqli_query($db, "UPDATE products SET prod_name ='$prodname', prod_cat ='$prodcat',prod_price ='$prodprice',prod_desc ='$proddesc',prod_quantity ='$prodquant' WHERE prod_id = '$prodid'");
+		if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
+
+		mysqli_query($db, "UPDATE products SET prod_name ='$prodname', prod_cat ='$prodcat',prod_price ='$prodprice',prod_desc ='$proddesc',prod_quantity ='$prodquant',prod_img ='$image' WHERE prod_id = '$prodid'");
 		$_SESSION['msg'] = "Product '$prodname' Updated";
 		header('location: tshirt.php');
 	}
-
+	}
 	$result = mysqli_query($db, "SELECT * FROM products");
 
  ?>
