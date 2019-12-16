@@ -48,38 +48,50 @@ include 'db.php';
   <!-- END HEADER -->
   
   <!-- SHOPPING SECTION -->
-<div class="container d-flex flex-wrap justify-content-between" style="margin-top: 25px; padding-left: 70px;">
-    <div class="card" style="width: 18rem; ">
-      <img src="./products/hats/hat_sunflowers1.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Sunflowers by Van Gogh<br>
-        P500.00</h5>
-        <p class="card-text">Artist: Pauline Bactad</p>
-        <a href="#" class="btn btn-primary">View Item</a>
+<div class="container" style="margin-top: 25px;">
+  <div class="d-flex">
+    <div id="carouselExampleControls" class="carousel slide col-lg-6" data-ride="carousel"  style="height: 507.38px; max-width: 507.38px;">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="./products/hats/hat_wavexstarrynight.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="./products/hats/hat_wavexstarrynight1.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="./products/hats/hat_wavexstarrynight2.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="./products/hats/hat_wavexstarrynight3.jpg" class="d-block w-100" alt="...">
+        </div>
       </div>
+      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
     </div>
-    <div class="card" style="width: 18rem; ">
-      <img src="./products/hats/hat_totoro1.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Totoro<br>
-        P500.00</h5>
-        <p class="card-text">Artist: Pauline Bactad</p>
-        <a href="#" class="btn btn-primary">View Item</a>
-      </div>
+    <div class="product">
+      <h1 id="title">The Wave x Starrynight</h1>
+      <h2 id="price">₱700.00</h2>
+      <h4 id="artist">Artist: Pauline Bactad</h4>
+      <p id="description"><h3>Description:</h3>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+      <form class="d-flex" style="flex-direction: column; max-width: 250px;">
+        <input type="submit" name="" style="max-width: 150px;" class="btn btn-block btn-success" value="Order">
+      </form>
     </div>
-    <div class="card" style="width: 18rem; ">
-      <img src="./products/hats/hat_wavexstarrynight1.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">The Wave x Starrynight<br>
-        P500.00</h5>
-        <p class="card-text">Artist: Pauline Bactad</p>
-        <a href="wxs.php" class="btn btn-primary">View Item</a>
-      </div>
-    </div>
-</div>
-<div class="container d-flex justify-content-center">
-<button class="btn btn-warning">Load More...</button>
-</div>
+  </div>
+</div>  
 
 <!-- CONTACT SECTION -->
   <div class="section section-contact-us text-center">
