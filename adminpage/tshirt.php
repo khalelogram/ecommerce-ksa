@@ -1,5 +1,29 @@
-<?php include('inc/header.php'); ?>
+<?php 
 
+include('inc/header.php'); 
+include 'db.php';
+include ('inc/functions.php');
+
+$tshirt = "SELECT * FROM `products` WHERE `prod_cat` = 'tshirt'";
+$result2 = mysqli_query($dbconnection, $tshirt);
+$valid = false;
+$msg = "";
+
+if(isset($_POST['submit'])){
+  $msg = createProduct();
+  if(strlen($msg) > 0){
+    $valid = true;
+  }else{
+    $valid = false;
+}
+if(isset($_GET['edit'])){
+    $id = $_GET['edit'];
+    $rec = mysqli_query($db, "SELECT * FROM products WHERE prod_id=$id");
+    $record = mysqli_fetch_array($rec);
+    $id = $record['prod_id'];
+  }
+}
+?>
 
 <div class="container-fluid p-0">
 <!-- Bootstrap row -->
@@ -10,117 +34,103 @@
     <div class="col">
         
         <h1>
-            COMPANY NAME
+            Welcome to ADMIN Dashboard
             <small class="text-muted">Version 2.1</small>
         </h1>
         
         
         <div class="card">
-            <h4 class="card-header">T-SHIRT</h4>
+            <h4 class="card-header">Category T-Shirts</h4>
             <div class="card-body">
-                  <div class="jumbotron">
+            <div class="jumbotron"> 
                     <div class="row d-flex justify-content-around">
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="..." alt="Card image cap">
+                      <?php while ($row = mysqli_fetch_array($result2)): ?>
+                      <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="<?php echo $row['prod_img'];?>" alt="Card image cap">
                         <div class="card-body">
-                          <h5 class="card-title">T-SHIRT 1</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <a href="#" class="btn btn-outline-info btn-sm">Edit Product</a>
-                          <button type="button" class="btn btn-sm btn-outline-danger">Delete</button>
+                                <p class="card-title">
+                                <?php echo "<h5>".$row['prod_name']."</h5>";?></p>
+                                <p class="card-text">Product Code: <?php echo $row['prod_id'];?></p>
+                                <p class="card-text"><?php echo $row['prod_desc'];?></p>
+                                <p class="card-text">PHP <?php echo $row['prod_price'];?></p>
+                                <p class="card-text">Quantity:<?php echo $row['prod_quantity'];?></p>
+                                <div class="row d-flex justify-content-between"><a class="btn btn-primary" href="#collapseTwo?edit=<?php echo $row['prod_id'];?>">Edit Product</a>
+                                <a class="btn btn-primary" href="delete.php?del=<?php echo $row['prod_id'];?>">Remove Product</a></div>
+
                         </div>
                       </div>
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="..." alt="Card image cap">
-                        <div class="card-body">
-                          <h5 class="card-title">T-SHIRT 2</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <a href="#" class="btn btn-outline-info btn-sm">Edit Product</a>
-                          <button type="button" class="btn btn-sm btn-outline-danger">Delete</button>
-                        </div>
-                      </div>
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="..." alt="Card image cap">
-                        <div class="card-body">
-                          <h5 class="card-title">T-SHIRT 3</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <a href="#" class="btn btn-outline-info btn-sm">Edit Product</a>
-                          <button type="button" class="btn btn-sm btn-outline-danger">Delete</button>
-                        </div>
-                      </div>
+                      <?php endwhile; ?>
+                  <div class = "card">
               </div>
             </div>  
         </div>
       </div>
-     <h1></h1>
-
-
-<div id="accordion" role="tablist" aria-multiselectable="true" class="card-collapse">
-  
+    </div>
+  <div id="accordion" role="tablist" aria-multiselectable="true" class="card-collapse">
   <div class="card card-plain">
     <div class="card-header" role="tab" id="headingTwo">
-    <a class="collapsed btn btn-primary"  data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-        Add Item T-shirt
+    <h4><a class="collapsed btn btn-primary"  data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Add Product</h4></a>
+        <?php 
+        $typeOfError = "success";
+         if($msg == "Failed to Add Product") {
+         $typeOfError = "danger";
+        }
 
+    if($valid) echo "<div class='alert alert-$typeOfError'>$msg</div>";
+    ?>
         <i class="now-ui-icons arrows-1_minimal-down"></i>
-        </a>
     </div>
-    <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+<div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
       <div class="card-body">
         <div class="container ">  
           <div class="col-sm-10 col-lg-4 mr-auto border p-4">
               <form method="post" enctype="multipart/form-data">
-                <div class="form-group">
+                <div>
                   <label><strong>Upload Files</strong></label>
                   <div class="custom-file">
-                    <input type="file" name="files[]" multiple class="custom-file-input" id="customFile">
+                    <input type="file" name="image" multiple class="custom-file-input" id="customFile" value="">
                     <label class="custom-file-label" for="customFile">Choose file</label>
                   </div>
                 </div>
-                <div class="form-group">
-                  <button type="button" name="upload" value="upload" id="upload" class="btn btn-block btn-dark"><i class="fa fa-fw fa-upload"></i> Upload</button>
-                </div>
-              </form>
+              
         </div>
-        
-            <select>
-              <option selected="selected" hidden="">Choose Item</option>
-              <option>tshirt</option>
-              <option>pants</option>
-              <option>hats</option>
-              <option>shoes</option>
-            </select>
+          <div>
+            <div>
+            <h4><label for="exampleFormControlInput1">Product Code</label></h4>
+            <input type="number" class="form-control" id="exampleFormControlInput1" hidden ="hidden" placeholder="Enter Product Code" name="prodid">
+          </div>
 
-        <form>
-          <div class="form-group">
-            <h4><label for="exampleFormControlInput1">Title</label></h4>
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Title of Product">
+            <h4><label for="exampleFormControlInput1">Product Name</label></h4>
+            <input type="text" class="form-control" name= "prodname" id="exampleFormControlInput1" placeholder="Product Name">
           </div>
           
-          <div class="form-group">
-            <h4><label for="exampleFormControlTextarea1">Description of Product</label></h4>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Enter Item Description"></textarea>
+          <div>
+            <h4><label for="exampleFormControlTextarea1">Description</label></h4>
+            <textarea class="form-control" name= "proddesc" id="exampleFormControlTextarea1" rows="3" placeholder="Enter Item Description"></textarea>
           </div>
 
-          <div class="form-group">
+          <div>
+            <h4><label for="exampleFormControlInput1">Category</label></h4>
+            <select name="prodcat">
+              <option value="tshirt">T-shirt</option>
+              <option value="pants">Pants</option>
+              <option value="hats">Hats</option>
+              <option value="shoes">Shoes</option>
+              </select>
+          </div>
+
+          <div>
             <h4><label for="exampleFormControlInput1">Price</label></h4>
-            <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Enter Price">
+            <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Enter Price" name="prodprice">
           </div>
 
-        <div class="form-check">
-        <label class="form-check-label">
-            <input class="form-check-input" type="checkbox">
-            <span class="form-check-sign"></span>
-              Confirm Add Item
-        </label>
-        </div>
-
-          <button type="submit" class="btn btn-primary">Add Product</button>
-        </form>
-
-    
-
-
-     </div>
+          <div>
+            <h4><label for="exampleFormControlInput1">Quantity</label></h4>
+            <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Enter Quantity" name="prodquant"><br>
+          </div>
+          <button type="submit" class="btn btn-primary" name="submit">Add Product</button>
+      </form>
+      </div>
     </div>
 </div>
        
