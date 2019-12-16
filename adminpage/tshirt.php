@@ -55,8 +55,8 @@ $msg = "";
                                 <p class="card-text">PHP <?php echo $row['prod_price'];?></p>
                                 <p class="card-text">Quantity:<?php echo $row['prod_quantity'];?></p>
                                 <table>
-                                <td><a class="btn btn-primary" href="tshirt.php?edit=<?php echo $row['prod_id'];?>">Edit</a></td>
-                                <td><a class="btn btn-primary" href="server.php?del=<?php echo $row['prod_id'];?>">Remove</a></td>
+                                <td><a class="btn btn-success" href="tshirt.php?edit=<?php echo $row['prod_id'];?>">Edit</a></td>
+                                <td><a class="btn btn-danger" href="server.php?del=<?php echo $row['prod_id'];?>">Remove</a></td>
                                 </tr>
                                 </table>
                         </div>
@@ -71,7 +71,7 @@ $msg = "";
   <div id="accordion" role="tablist" aria-multiselectable="true" class="card-collapse">
   <div class="card card-plain">
     <div class="card-header" role="tab" id="headingTwo">
-    <h4>Add Product</h4></a>
+    <h4>Add/Update Product</h4></a>
         <i class="now-ui-icons arrows-1_minimal-down"></i>
     </div>
 <div role="tabpanel" aria-labelledby="headingTwo">
@@ -86,8 +86,7 @@ $msg = "";
                     <label class="custom-file-label" for="customFile">Choose file</label>
                   </div>
                 </div>
-              
-        </div>
+          </div>
           <div>
             <div>
             <input type="number" class="form-control" id="exampleFormControlInput1" hidden ="hidden" placeholder="Enter Product Code" name="prodid" value="<?php echo $prodid; ?>">
