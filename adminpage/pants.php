@@ -81,6 +81,14 @@
                 </form>
           </div>
 
+            <select>
+              <option selected="selected" hidden="">Choose Item</option>
+              <option>tshirt</option>
+              <option>pants</option>
+              <option>hats</option>
+              <option>shoes</option>
+            </select>
+
         <form>
           <div class="form-group">
             <h4><label for="exampleFormControlInput1">Title</label></h4>

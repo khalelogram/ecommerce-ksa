@@ -1,3 +1,15 @@
+<!-- if (isset($_GET['edit'])) {
+        $id = $_GET['edit'];
+        $edit_state = true;
+        $rec = mysqli_query($db, "SELECT * FROM info WHERE id=$id");
+        $record = mysqli_fetch_array($rec);
+        $address = $record['address'];
+        $name = $record['name'];
+        $id =   $record['id'];
+    }
+
+?>-->
+
 <?php include('inc/header.php'); ?>
 <?php include('registration/server.php'); ?>
 
@@ -61,35 +73,52 @@
       </div>
       <div class="modal-body">
         
-        <div class="container">
-        <div class = "header">
+       <!--  <div class="container">
+        <div class = "header"> -->
             <!-- <h4>Register</h4> -->
-        </div>
+        <!-- </div> -->
             <form method="post" action="">
                 <!-- display validation error -->
+                <div class="form-group">
                 <?php include('errors.php');?>
-                <div class="input-group">
+                <!-- <div class="input-group"> -->
+                    <label>Lastname <input type="text" class="form-control" name="lastname" value="<?php echo $lastname;?>">
+                    </label>
+                    
+               <!--  <div class="input-group"> -->
+                    <label>Firstname <input type="text" class="form-control" name="firstname" value="<?php echo $lastname;?>">
+                    </label>
+                    
+                <!-- </div> -->
+                <!-- <div class="input-group"> -->
+                    <label>Email <input type="text" class="form-control" name="email" value="<?php echo $email;?>">
+                    </label>
+                    
+                <!-- </div> -->
+                <!-- <div class="input-group"> -->
+                    <label>ContactNumber <input type="text" class="form-control" name="contact_no" value="<?php echo $contact_no;?>">
+                    </label>
+                    
+                <!-- </div> -->
+                <!-- <div class="input-group"> -->
+                    <label>Address <input type="text" class="form-control" name="address" value="<?php echo $address;?>">
+                    </label><br>
+                    
+                <!-- </div> -->
+                <!-- <div class="input-group"> -->
                     <label>Username</label>
-                    <input type="text" name="username" value="<?php echo $username;?>">
-                </div>
-                <div class="input-group">
-                    <label>Email</label>
-                    <input type="text" name="email" value="<?php echo $email;?>">
-                </div>
-                <div class="input-group">
-                    <label>Password</label>
-                    <input type="password" name="password_1">
-                </div>
-                <div class="input-group">
-                    <label>Confirm Password</label>
-                    <input type="password" name="password_2">
-                </div>
-                <div class="input-group">
+                    <input type="text" class="form-control" name="username" value="<?php echo $username;?>">
+                <!-- </div> -->
+                <!-- <div class="input-group"> -->
+                    <label>Password <input type="password" class="form-control" name="password_1">
+                    </label>
+                <!-- </div> -->
+                    <label>Confirm Password <input type="password" class="form-control" name="password_2">
+                    </label>
+                <!-- <div class="input-group"> -->
                     <button type="submit" name="register" class="btn btn-primary btn-sm">Register</button>
-                </div>
-                
-            </form>
-         </div>
+                </div> 
+         <!-- </div> -->
         
 
       </div>
@@ -119,6 +148,7 @@
                                     <h5>
                                     <?php if (isset($_SESSION['username'])): ?>
                                     <p>Welcome !!<br> <strong><?php echo $_SESSION['username'];?></strong></p>
+                                    <p>Welcome !!<br> <strong><?php echo $_SESSION['lastname'];?></strong></p>
                                     <?php endif  ?>
                                     </h5>
                                     <h6>

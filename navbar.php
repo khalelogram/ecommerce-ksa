@@ -1,5 +1,4 @@
-<?php include('server.php');?>
-<?php include('errors.php');?>
+
 
 
   <nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="400" style="background-color: #716D6D;">
@@ -35,10 +34,7 @@
                         ?>
                       </h3>
                     </div>
-                  <?php endif ?>
-
-                  
-                    
+                  <?php endif ?>           
             </div>
 <!-- LOG IN -->
 
@@ -140,27 +136,7 @@
             Password: <input type="password" name="password" placeholder="***********">
           </form>
 
-            <div class="container">
-              <div class = "header">
-                <h2>Login</h2>
-              </div>
-                <form method="post" action="index.php">
-                  <!-- display validation error -->
-                  <?php include('adminpage/registration/errors.php');?>
-                  <div class="input-group">
-                    <label>Username</label>
-                    <input type="text" name="username">
-                  </div>
-                  <div class="input-group">
-                    <label>Password</label>
-                    <input type="password" name="password">
-                  </div> 
-                  <div class="input-group">
-                    <button type="submit" name="login" class="btn btn-primary btn-sm">Login</button>
-                  </div>
-                  <!-- <p>Not yet a member?<a href="register.php">Sign up</a></p> -->
-                 </form>
-              </div>
+            
     
     </div>
           <p class="text-center">Not yet a member? <a href="" data-toggle="modal" data-target="#signupModal">Sign up here.</a></p>
@@ -181,6 +157,7 @@
           </button>
           <h4 class="title title-up">Sign Up</h4>
         </div>
+        
         <div class="modal-body">
           <form method="post" style="display: flex; flex-direction: column;">
             Name:<input id="inputName" type="text" placeholder="Your full name here...">
@@ -195,42 +172,8 @@
               <option>Other</option>
             </select>
           </form>
-
-
-<!-- SIGN UP -->
-              <div class="container">
-                  <div class = "header">
-                    <h4>Register</h4>
-                       </div>
-                    <form method="post" action="index.php">
-                      <!-- display validation error -->
-                      <?php include('adminpage/registration/errors.php');?>
-                      <div class="input-group">
-                        <label>Username</label>
-                        <input type="text" name="username" value="<?php echo $username;?>">
-                      </div>
-                      <div class="input-group">
-                        <label>Email</label>
-                        <input type="text" name="email" value="<?php echo $email;?>">
-                      </div>
-                      <div class="input-group">
-                        <label>Password</label>
-                        <input type="password" name="password_1">
-                      </div>
-                      <div class="input-group">
-                        <label>Confirm Password</label>
-                        <input type="password" name="password_2">
-                      </div>
-                      <div class="input-group">
-                        <button type="submit" name="register" class="btn btn-primary btn-sm">Register</button>
-                      </div>
-                      <p><a href="index.php" class="btn btn-info btn-sm" >Sign in</a></p>   
-                    </form>
-                </div>
-<!-- SIGN UP -->
-
-
         </div>
+        
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
           <button id="submitBtn" type="submit" class="btn btn-warning">Register</button>
