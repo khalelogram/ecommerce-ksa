@@ -18,8 +18,8 @@
 		$prodname = $_POST['prodname'];
 		$proddesc = $_POST['proddesc'];
 		$prodcat = $_POST['prodcat'];
-		$prodprice = $_POST['prodquant'];
-		$prodquant = $_POST['prodpric'];
+		$prodprice = $_POST['prodprice'];
+		$prodquant = $_POST['prodquant'];
 
 		$query = "INSERT INTO `products`(`prod_name`, `prod_cat`, `prod_price`, `prod_desc`, `prod_quantity`) VALUES ('$prodname','$prodcat','$prodprice','$proddesc','$prodquant')";
 		mysqli_query($db, $query);
