@@ -1,28 +1,28 @@
 <?php 
-
-include('inc/header.php'); 
 include 'db.php';
+include 'server.php';
+include('inc/header.php'); 
 include ('inc/functions.php');
+
 
 $tshirt = "SELECT * FROM `products` WHERE `prod_cat` = 'tshirt'";
 $result2 = mysqli_query($dbconnection, $tshirt);
 $valid = false;
 $msg = "";
 
-if(isset($_POST['submit'])){
-  $msg = createProduct();
-  if(strlen($msg) > 0){
-    $valid = true;
-  }else{
-    $valid = false;
-}
-if(isset($_GET['edit'])){
+  if(isset($_GET['edit'])){
     $id = $_GET['edit'];
+    $edit_state = true;
     $rec = mysqli_query($db, "SELECT * FROM products WHERE prod_id=$id");
     $record = mysqli_fetch_array($rec);
-    $id = $record['prod_id'];
+    $prodid = $record['prod_id'];
+    $prodname = $record['prod_name'];
+    $proddesc = $record['prod_desc'];
+    $prodcat = $record['prod_cat'];
+    $prodprice = $record['prod_price'];
+    $prodquant = $record['prod_quantity'];
   }
-}
+
 ?>
 
 <div class="container-fluid p-0">
@@ -54,9 +54,11 @@ if(isset($_GET['edit'])){
                                 <p class="card-text"><?php echo $row['prod_desc'];?></p>
                                 <p class="card-text">PHP <?php echo $row['prod_price'];?></p>
                                 <p class="card-text">Quantity:<?php echo $row['prod_quantity'];?></p>
-                                <div class="row d-flex justify-content-between"><a class="btn btn-primary" href="#collapseTwo?edit=<?php echo $row['prod_id'];?>">Edit Product</a>
-                                <a class="btn btn-primary" href="delete.php?del=<?php echo $row['prod_id'];?>">Remove Product</a></div>
-
+                                <table>
+                                <td><a class="btn btn-primary" href="tshirt.php?edit=<?php echo $row['prod_id'];?>">Edit</a></td>
+                                <td><a class="btn btn-primary" href="server.php?del=<?php echo $row['prod_id'];?>">Remove</a></td>
+                                </tr>
+                                </table>
                         </div>
                       </div>
                       <?php endwhile; ?>
@@ -69,22 +71,14 @@ if(isset($_GET['edit'])){
   <div id="accordion" role="tablist" aria-multiselectable="true" class="card-collapse">
   <div class="card card-plain">
     <div class="card-header" role="tab" id="headingTwo">
-    <h4><a class="collapsed btn btn-primary"  data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Add Product</h4></a>
-        <?php 
-        $typeOfError = "success";
-         if($msg == "Failed to Add Product") {
-         $typeOfError = "danger";
-        }
-
-    if($valid) echo "<div class='alert alert-$typeOfError'>$msg</div>";
-    ?>
+    <h4>Add Product</h4></a>
         <i class="now-ui-icons arrows-1_minimal-down"></i>
     </div>
-<div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+<div role="tabpanel" aria-labelledby="headingTwo">
       <div class="card-body">
         <div class="container ">  
           <div class="col-sm-10 col-lg-4 mr-auto border p-4">
-              <form method="post" enctype="multipart/form-data">
+                <form method="POST" action="server.php">
                 <div>
                   <label><strong>Upload Files</strong></label>
                   <div class="custom-file">
@@ -96,39 +90,43 @@ if(isset($_GET['edit'])){
         </div>
           <div>
             <div>
-            <h4><label for="exampleFormControlInput1">Product Code</label></h4>
-            <input type="number" class="form-control" id="exampleFormControlInput1" hidden ="hidden" placeholder="Enter Product Code" name="prodid">
+            <input type="number" class="form-control" id="exampleFormControlInput1" hidden ="hidden" placeholder="Enter Product Code" name="prodid" value="<?php echo $prodid; ?>">
           </div>
 
             <h4><label for="exampleFormControlInput1">Product Name</label></h4>
-            <input type="text" class="form-control" name= "prodname" id="exampleFormControlInput1" placeholder="Product Name">
+            <input type="text" class="form-control" name="prodname" placeholder="Enter Product Name" autocomplete="off" value="<?php echo $prodname; ?>">
           </div>
           
           <div>
             <h4><label for="exampleFormControlTextarea1">Description</label></h4>
-            <textarea class="form-control" name= "proddesc" id="exampleFormControlTextarea1" rows="3" placeholder="Enter Item Description"></textarea>
+            <textarea class="form-control" name= "proddesc" id="exampleFormControlTextarea1" rows="3" placeholder="<?php echo $proddesc; ?>"></textarea>
           </div>
 
           <div>
             <h4><label for="exampleFormControlInput1">Category</label></h4>
-            <select name="prodcat">
+            <select name="prodcat" value="<?php echo $prodcat; ?>">
               <option value="tshirt">T-shirt</option>
               <option value="pants">Pants</option>
               <option value="hats">Hats</option>
               <option value="shoes">Shoes</option>
-              </select>
+            </select>
           </div>
 
           <div>
             <h4><label for="exampleFormControlInput1">Price</label></h4>
-            <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Enter Price" name="prodprice">
+            <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Enter Price" name="prodprice" value="<?php echo $prodprice; ?>">
           </div>
 
           <div>
             <h4><label for="exampleFormControlInput1">Quantity</label></h4>
-            <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Enter Quantity" name="prodquant"><br>
+            <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Enter Quantity" name="prodquant" value="<?php echo $prodquant;?>"><br>
           </div>
-          <button type="submit" class="btn btn-primary" name="submit">Add Product</button>
+          <?php if($edit_state == false): ?>
+        <button type="submit" name="save" class="btn btn-primary"> Add Product </button>
+        <?php else: ?>
+        <button type="submit" name="update" class="btn btn-primary"> Edit Product </button>
+        <button type="cancel" name="cancel" class="btn btn-primary"> Cancel </button>
+        <?php endif ?>
       </form>
       </div>
     </div>
