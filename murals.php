@@ -1,5 +1,5 @@
 <?php
-include 'db.php';
+include 'adminpage/inc/db.php';
 
   $query = "SELECT * FROM products";
 

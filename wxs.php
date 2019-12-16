@@ -1,14 +1,28 @@
 <?php
-include 'db.php';
+include 'adminpage/inc/db.php';
 
-  $query = "SELECT * FROM products";
+  $tshirt = "SELECT * FROM `products` WHERE `prod_cat` = 'tshirt'";
+$result2 = mysqli_query($dbconnection, $tshirt);
+$valid = false;
+$msg = "";
 
-  $result = mysqli_query($dbconnection, $query);
-
-  if(!$result)
+if(isset($_POST['submit']))
   {
-    die(mysqli_error());
+    $msg = createProduct();
+    if(strlen($msg) > 0)
+    {
+      $valid = true;
+    }else{
+      $valid = false;
   }
+if(isset($_GET['edit']))
+{
+    $id = $_GET['edit'];
+    $rec = mysqli_query($db, "SELECT * FROM products WHERE prod_id=$id");
+    $record = mysqli_fetch_array($rec);
+    $id = $record['prod_id'];
+  }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -74,22 +88,16 @@ include 'db.php';
         <span class="sr-only">Next</span>
       </a>
     </div>
-    <div class="product">
+    <div class="product"><?php if ($row = mysqli_fetch_array($result2)): ?>
       <h1 id="title">The Wave x Starrynight</h1>
       <h2 id="price">₱700.00</h2>
       <h4 id="artist">Artist: Pauline Bactad</h4>
-      <p id="description"><h3>Description:</h3>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
+      <p id="description"><?php echo $row['prod_desc'];?></p>
       <form class="d-flex" style="flex-direction: column; max-width: 250px;">
         <input type="submit" name="" style="max-width: 150px;" class="btn btn-block btn-success" value="Order">
       </form>
     </div>
+    <?php endif; ?> 
   </div>
 </div>  
 
