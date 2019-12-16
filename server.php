@@ -13,7 +13,7 @@
 
 	//if the register button is clicked
 	if (isset($_POST['register'])) {
-
+		
 		$lastname = mysqli_real_escape_string($db,$_POST['lastname']);
 		$firstname = mysqli_real_escape_string($db,$_POST['firstname']);
 		$email = mysqli_real_escape_string($db,$_POST['email']);
@@ -62,7 +62,6 @@
 		}
 }
 
-
 	//log user from login page
 	if (isset($_POST['login'])) {
 		//echo json_encode($_POST);
@@ -85,7 +84,7 @@
 				//log user in
 				$_SESSION['username'] = $username;
 				$_SESSION['success'] = "You are now logged in";
-				header('Location: ../index.php'); //redirect to home page
+				header('Location:index.php'); //redirect to home page
 			
 			}else{
 				array_push($errors, "The username or password did not match");
@@ -101,8 +100,7 @@
 	if (isset($_GET['logout'])) {
 		session_destroy();
 		unset($_SESSION['username']);
-		header('location:../registration/index.php');
-	}     
-
+		header('location:index.php');
+	}
 
 ?>

@@ -26,6 +26,7 @@
                           <h5 class="card-title">SHOES 1</h5>
                           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                           <a href="#" class="btn btn-outline-info btn-sm">Edit Product</a>
+                          <button type="button" class="btn btn-sm btn-outline-danger">Delete</button>
                         </div>
                       </div>
                     <div class="card" style="width: 18rem;">
@@ -34,6 +35,7 @@
                           <h5 class="card-title">SHOES 2</h5>
                           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                           <a href="#" class="btn btn-outline-info btn-sm">Edit Product</a>
+                          <button type="button" class="btn btn-sm btn-outline-danger">Delete</button>
                         </div>
                       </div>
                     <div class="card" style="width: 18rem;">
@@ -42,6 +44,7 @@
                           <h5 class="card-title">SHOES 3</h5>
                           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                           <a href="#" class="btn btn-outline-info btn-sm">Edit Product</a>
+                          <button type="button" class="btn btn-sm btn-outline-danger">Delete</button>
                         </div>
                       </div>
               </div>
@@ -77,6 +80,14 @@
                   </div>
                 </form>
           </div>
+
+            <select>
+              <option selected="selected" hidden="">Choose Item</option>
+              <option>tshirt</option>
+              <option>pants</option>
+              <option>hats</option>
+              <option>shoes</option>
+            </select>
 
         <form>
           <div class="form-group">

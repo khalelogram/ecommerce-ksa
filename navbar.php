@@ -1,3 +1,6 @@
+
+
+
   <nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="400" style="background-color: #716D6D;">
     <div class="container">
       <div class="navbar-translate">
@@ -12,6 +15,29 @@
       </div>
       <div class="collapse navbar-collapse justify-content-end" id="navigation" data-nav-image="./assets/img/blurred-image-1.jpg">
         <ul class="navbar-nav">
+
+<!-- LOG IN -->
+          <div class = "header">
+              <h4><?php if (isset($_SESSION['username'])): ?>
+                    <p>Welcome <strong><?php echo $_SESSION['username'];?></strong></p>
+                    <p><a href="index.php?logout='1'" style="color:red;">Log out</a></p>
+                  <?php endif  ?>
+                  </h4>
+                </div>
+                <div class = "content">
+                  <?php if(isset($_SESSION['success'])): ?> 
+                    <div class="error success">
+                      <h3>
+                        <?php
+                          echo $_SESSION['success'];
+                          unset ($_SESSION['success']);
+                        ?>
+                      </h3>
+                    </div>
+                  <?php endif ?>           
+            </div>
+<!-- LOG IN -->
+
           <li class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink1" data-toggle="dropdown">
               <i class="now-ui-icons design_app"></i>
@@ -109,6 +135,10 @@
             Username: <input type="text" name="username" placeholder="Username">
             Password: <input type="password" name="password" placeholder="***********">
           </form>
+
+            
+    
+    </div>
           <p class="text-center">Not yet a member? <a href="" data-toggle="modal" data-target="#signupModal">Sign up here.</a></p>
         </div>
         <div class="modal-footer">
@@ -127,6 +157,7 @@
           </button>
           <h4 class="title title-up">Sign Up</h4>
         </div>
+        
         <div class="modal-body">
           <form method="post" style="display: flex; flex-direction: column;">
             Name:<input id="inputName" type="text" placeholder="Your full name here...">
@@ -142,6 +173,7 @@
             </select>
           </form>
         </div>
+        
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
           <button id="submitBtn" type="submit" class="btn btn-warning">Register</button>
