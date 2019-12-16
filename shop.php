@@ -1,9 +1,8 @@
 <?php
-include 'db.php';
+include 'adminpage/inc/db.php';
 include 'readmoreFunction.php';
 
-  $query = "SELECT * FROM products";
-
+  $query = "SELECT * FROM `products` WHERE `prod_cat` = 'tshirt'";
   $result = mysqli_query($dbconnection, $query);
 
   if(!$result)
@@ -87,7 +86,7 @@ include 'readmoreFunction.php';
           <button onclick="readMore1()" id="myBtn1">Read more</button>
         </div>
         <div class="d-flex justify-content-center card-footer">
-          <a href="shoes.php"><input class="btn btn-warning btn-lg d-flex" value="See More" type="submit" name="Shirts"></a>
+          <a href="shoes.php"><input class="btn btn-warning btn-lg d-flex" value="See More" type="submit" name="Shoes"></a>
         </div>
       </div>
     </div>
@@ -109,7 +108,7 @@ include 'readmoreFunction.php';
           <button onclick="readMore2()" id="myBtn2">Read more</button>
         </div>
         <div class="d-flex justify-content-center card-footer">
-          <a href="hats.php"><input class="btn btn-warning btn-lg d-flex" value="See More" type="submit" name="Shirts"></a>
+          <a href="hats.php"><input class="btn btn-warning btn-lg d-flex" value="See More" type="submit" name="Hats"></a>
         </div>
       </div>
     </div>
@@ -129,7 +128,7 @@ include 'readmoreFunction.php';
           <button onclick="readMore3()" id="myBtn3">Read more</button>
         </div>
         <div class="d-flex justify-content-center card-footer">
-          <a href="pants.php"><input class="btn btn-warning btn-lg d-flex" value="See More" type="submit" name="Shirts"></a>
+          <a href="pants.php"><input class="btn btn-warning btn-lg d-flex" value="See More" type="submit" name="Pants"></a>
         </div>
       </div>
     </div>
@@ -152,7 +151,7 @@ include 'readmoreFunction.php';
           <button onclick="readMore4()" id="myBtn4">Read more</button>
         </div>
         <div class="d-flex justify-content-center align-items-end card-footer">
-          <a href="murals.php"><input class="btn btn-warning btn-lg d-flex" value="See More" type="submit" name="Shirts"></a>
+          <a href="murals.php"><input class="btn btn-warning btn-lg d-flex" value="See More" type="submit" name="Mural"></a>
         </div>
       </div>
     </div>
@@ -172,7 +171,7 @@ include 'readmoreFunction.php';
           <button onclick="readMore5()" id="myBtn5">Read more</button>
         </div>
         <div class="d-flex justify-content-center card-footer">
-          <a href="others.php"><input class="btn btn-warning btn-lg" value="See More" type="submit" name="Shirts"></a>
+          <a href="others.php"><input class="btn btn-warning btn-lg" value="See More" type="submit" name="Others"></a>
         </div>
       </div>
     </div>
