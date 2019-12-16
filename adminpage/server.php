@@ -1,0 +1,57 @@
+<?php 
+	
+	session_start();
+
+	$prodname = "";
+	$proddesc = "";
+	$prodcat = "";
+	$prodprice = "";
+	$prodquant = "";
+	$prodid = 0;
+	$edit_state = false;
+
+	$db = mysqli_connect('localhost', 'root', '', 'ecommerce_db');
+
+	// == SAVE
+
+	if(isset($_POST['save'])){
+		$prodname = $_POST['prodname'];
+		$proddesc = $_POST['proddesc'];
+		$prodcat = $_POST['prodcat'];
+		$prodprice = $_POST['prodquant'];
+		$prodquant = $_POST['prodpric'];
+
+		$query = "INSERT INTO `products`(`prod_name`, `prod_cat`, `prod_price`, `prod_desc`, `prod_quantity`) VALUES ('$prodname','$prodcat','$prodprice','$proddesc','$prodquant')";
+		mysqli_query($db, $query);
+		$_SESSION['msg'] = "Product Added";
+		header('location: tshirt.php');
+	}
+
+	// == DELETE
+
+	if(isset($_GET['del'])){
+		$id = $_GET['del'];
+
+		mysqli_query($db, "DELETE FROM products WHERE prod_id=$id");
+		$_SESSION['msg'] = "Product Deleted";
+		header('location: tshirt.php');
+	}
+
+	// == UPDATE
+
+	if(isset($_POST['update'])){
+		$prodname = mysqli_real_escape_string($db,$_POST['prodname']);
+		$proddesc = mysqli_real_escape_string($db,$_POST['proddesc']);
+		$prodcat = mysqli_real_escape_string($db,$_POST['prodcat']);
+		$prodquant = mysqli_real_escape_string($db,$_POST['prodquant']);
+		$prodprice = mysqli_real_escape_string($db,$_POST['prodprice']);
+		$prodid = mysqli_real_escape_string($db,$_POST['prodid']);
+
+		mysqli_query($db, "UPDATE products SET prod_name ='$prodname', prod_cat ='$prodcat',prod_price ='$prodprice',prod_desc ='$proddesc',prod_quantity ='$prodquant' WHERE prod_id = '$prodid'");
+		$_SESSION['msg'] = "Product '$prodname' Updated";
+		header('location: tshirt.php');
+	}
+
+	$result = mysqli_query($db, "SELECT * FROM products");
+
+ ?>
