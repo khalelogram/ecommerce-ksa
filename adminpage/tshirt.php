@@ -21,6 +21,7 @@ $msg = "";
     $prodcat = $record['prod_cat'];
     $prodprice = $record['prod_price'];
     $prodquant = $record['prod_quantity'];
+    $image = $record['prod_img'];
   }
 
 ?>
@@ -46,7 +47,7 @@ $msg = "";
                     <div class="row d-flex justify-content-around">
                       <?php while ($row = mysqli_fetch_array($result2)): ?>
                       <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="<?php echo $row['prod_img'];?>" alt="Card image cap">
+                        <?php echo '<img src="shirts-web/'.$row['prod_img'].'"width="285" height="200" />'; ?>
                         <div class="card-body">
                                 <p class="card-title">
                                 <?php echo "<h5>".$row['prod_name']."</h5>";?></p>
@@ -78,7 +79,7 @@ $msg = "";
       <div class="card-body">
         <div class="container ">  
           <div class="col-sm-10 col-lg-4 mr-auto border p-4">
-                <form method="POST" action="server.php">
+                <form method="POST" action="server.php" enctype="multipart/form-data">
                 <div>
                   <label><strong>Upload Files</strong></label>
                   <div class="custom-file">
