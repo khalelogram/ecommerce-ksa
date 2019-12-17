@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 13, 2019 at 01:46 AM
+-- Generation Time: Dec 17, 2019 at 01:47 AM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.1.33
 
@@ -44,20 +44,20 @@ CREATE TABLE `products` (
   `prod_id` int(11) NOT NULL,
   `prod_name` varchar(255) NOT NULL,
   `prod_cat` char(255) NOT NULL,
-  `prod_img` varchar(255) NOT NULL,
   `prod_price` int(11) NOT NULL,
   `prod_desc` varchar(1000) NOT NULL,
-  `prod_quantity` int(11) NOT NULL
+  `prod_quantity` int(11) NOT NULL,
+  `prod_img` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`prod_id`, `prod_name`, `prod_cat`, `prod_img`, `prod_price`, `prod_desc`, `prod_quantity`) VALUES
-(1, 'pink shirt', 'tshirt', '', 150, 'a cute pink tshirt', 2),
-(124, 'yellow bucket hat', 'buckethat', '', 250, 'a nice yellow bucket hat', 5),
-(125, 'vneck shirt', 'tshirt', '', 150, 'stylish vnect shirt', 10);
+INSERT INTO `products` (`prod_id`, `prod_name`, `prod_cat`, `prod_price`, `prod_desc`, `prod_quantity`, `prod_img`) VALUES
+(186, 'Sierra Shirt', 'tshirt', 800, 'A sierra printed tshirt', 10, 'shirt_sierra.jpg'),
+(187, 'Eow Shirt', 'tshirt', 700, 'An eow printed tshirt', 20, 'shirt_eow.jpg'),
+(188, 'Billie Shirt', 'tshirt', 600, 'A billie printed tshirt', 10, 'shirt_billie.jpg');
 
 -- --------------------------------------------------------
 
@@ -84,16 +84,13 @@ CREATE TABLE `users` (
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
-  ADD PRIMARY KEY (`order_id`),
-  ADD UNIQUE KEY `order_id` (`order_id`);
+  ADD PRIMARY KEY (`order_id`);
 
 --
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
-  ADD PRIMARY KEY (`prod_id`),
-  ADD UNIQUE KEY `prod_id` (`prod_id`),
-  ADD UNIQUE KEY `prod_id_2` (`prod_id`);
+  ADD PRIMARY KEY (`prod_id`);
 
 --
 -- Indexes for table `users`
@@ -115,7 +112,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `prod_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
+  MODIFY `prod_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=189;
 
 --
 -- AUTO_INCREMENT for table `users`
