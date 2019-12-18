@@ -5,7 +5,7 @@ include('inc/header.php');
 include ('inc/functions.php');
 
 
-$tshirt = "SELECT * FROM `products` WHERE `prod_cat` = 'tshirt'";
+$tshirt = "SELECT * FROM `products` WHERE `prod_cat` = 'tshirt' LIMIT 3";
 $result2 = mysqli_query($dbconnection, $tshirt);
 $valid = false;
 $msg = "";
@@ -44,25 +44,25 @@ $msg = "";
             <h4 class="card-header">Category T-Shirts</h4>
             <div class="card-body">
             <div class="jumbotron"> 
-  <div class="row d-flex justify-content-around">
-    <?php while ($row = mysqli_fetch_array($result2)): ?>
-    <div class="card" style="width: 18rem;">
-      <?php echo '<img src="shirts-web/'.$row['prod_img'].'"width="285" height="200" />'; ?>
-      <div class="card-body">
-              <p class="card-title">
-              <?php echo "<h5>".$row['prod_name']."</h5>";?></p>
-              <p class="card-text">Product Code: <?php echo $row['prod_id'];?></p>
-              <p class="card-text"><?php echo $row['prod_desc'];?></p>
-              <p class="card-text">PHP <?php echo $row['prod_price'];?></p>
-              <p class="card-text">Quantity:<?php echo $row['prod_quantity'];?></p>
-              <table>
-              <td><a class="btn btn-success" href="tshirt.php?edit=<?php echo $row['prod_id'];?>">Edit</a></td>
-              <td><a class="btn btn-danger" href="server.php?del=<?php echo $row['prod_id'];?>">Remove</a></td>
-              </tr>
-              </table>
-      </div>
-    </div>
-    <?php endwhile; ?>
+                    <div class="row d-flex justify-content-around">
+                      <?php while ($row = mysqli_fetch_array($result2)): ?>
+                      <div class="card" style="width: 18rem;">
+                        <?php echo '<img src="shirts-web/'.$row['prod_img'].'"width="286" height="150" />'; ?>
+                        <div class="card-body">
+                                <p class="card-title">
+                                <?php echo "<h5>".$row['prod_name']."</h5>";?></p>
+                                <p class="card-text">Product Code: <?php echo $row['prod_id'];?></p>
+                                <p class="card-text"><?php echo $row['prod_desc'];?></p>
+                                <p class="card-text">PHP <?php echo $row['prod_price'];?></p>
+                                <p class="card-text">Quantity:<?php echo $row['prod_quantity'];?></p>
+                                <table>
+                                <td><a class="btn btn-success" href="tshirt.php?edit=<?php echo $row['prod_id'];?>">Edit</a></td>
+                                <td><a class="btn btn-danger" href="server.php?del=<?php echo $row['prod_id'];?>">Remove</a></td>
+                                </tr>
+                                </table>
+                        </div>
+                      </div>
+                      <?php endwhile; ?>
                   <div class = "card">
               </div>
             </div>  
