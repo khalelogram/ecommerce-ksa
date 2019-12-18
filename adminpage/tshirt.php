@@ -5,7 +5,7 @@ include('inc/header.php');
 include ('inc/functions.php');
 
 
-$tshirt = "SELECT * FROM `products` WHERE `prod_cat` = 'tshirt' LIMIT 3";
+$tshirt = "SELECT * FROM `products` WHERE `prod_cat` = 'tshirt'";
 $result2 = mysqli_query($dbconnection, $tshirt);
 $valid = false;
 $msg = "";
@@ -103,12 +103,8 @@ $msg = "";
           </div>
 
           <div>
-            <h4><label for="exampleFormControlInput1">Category</label></h4>
-            <select name="prodcat" value="<?php echo $prodcat; ?>">
+            <select name="prodcat" value="<?php echo $prodcat; ?>" hidden="hidden">
               <option value="tshirt">T-shirt</option>
-              <option value="pants">Pants</option>
-              <option value="hats">Hats</option>
-              <option value="shoes">Shoes</option>
             </select>
           </div>
 

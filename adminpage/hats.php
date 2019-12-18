@@ -103,12 +103,8 @@ $msg = "";
           </div>
 
           <div>
-            <h4><label for="exampleFormControlInput1">Category</label></h4>
-            <select name="prodcat" value="<?php echo $prodcat; ?>">
-              <option value="hats">T-shirt</option>
-              <option value="pants">Pants</option>
+             <select name="prodcat" value="<?php echo $prodcat; ?>" hidden="hidden">
               <option value="hats">Hats</option>
-              <option value="shoes">Shoes</option>
             </select>
           </div>
 

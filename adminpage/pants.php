@@ -41,7 +41,7 @@ $msg = "";
         
         
         <div class="card">
-            <h4 class="card-header">Category: Pants</h4>
+            <h4 class="card-header">Category Pants</h4>
             <div class="card-body">
             <div class="jumbotron">
                     <div class="row d-flex justify-content-around">
@@ -103,12 +103,8 @@ $msg = "";
           </div>
 
           <div>
-            <h4><label for="exampleFormControlInput1">Category</label></h4>
-            <select name="prodcat" value="<?php echo $prodcat; ?>">
-              <option value="tshirt">T-shirt</option>
+             <select name="prodcat" value="<?php echo $prodcat; ?>" hidden="hidden">
               <option value="pants">Pants</option>
-              <option value="hats">Hats</option>
-              <option value="shoes">Shoes</option>
             </select>
           </div>
 
