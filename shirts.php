@@ -1,11 +1,10 @@
 <?php
-include 'db.php';
+include 'adminpage/inc/db.php';
 
-  $query = "SELECT * FROM products";
+  $tshirt = "SELECT * FROM `products` WHERE `prod_cat` = 'tshirt'";
+$result2 = mysqli_query($dbconnection, $tshirt);
 
-  $result = mysqli_query($dbconnection, $query);
-
-  if(!$result)
+  if(!$result2)
   {
     die(mysqli_error());
   }
@@ -48,72 +47,22 @@ include 'db.php';
   <!-- END HEADER -->
   
   <!-- SHOPPING SECTION -->
-<div class="container d-flex flex-wrap content-center" style="margin-top: 25px; padding-left: 70px;">
-  <div class="container d-flex col-lg-4 col-md-6 col-sm-12" style="flex-direction: column; ">
+<div class="container d-flex flex-wrap justify-content-around col-12 col-lg-12 col-md-12 col-sm-12">
+ <?php while ($row = mysqli_fetch_array($result2)): ?>
+  
     <div class="card" style="width: 18rem; ">
-      <img src="./products/shirts/shirt_billie.jpg" class="card-img-top" alt="...">
+      <?php echo '<img src="adminpage/shirts-web/'.$row['prod_img'].'"width="285" height="200" />'; ?>
       <div class="card-body">
-        <h5 class="card-title">Billie Eilish<br>
-        P500.00</h5>
-        <p class="card-text">Artist: Pauline Bactad</p>
+        <p class="card-title"><?php echo "<h5>".$row['prod_name']."</h5>";?></p>
+        <p class="card-text"><?php echo $row['prod_desc'];?></p>
+        <p class="card-text">PHP <?php echo $row['prod_price'];?></p>
+        <p class="card-text">Quantity:<?php echo $row['prod_quantity'];?></p>
         <a href="#" class="btn btn-primary">View Item</a>
       </div>
     </div>
-    <div class="card" style="width: 18rem; ">
-      <img src="./products/shirts/shirt_vangogh.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Van Gogh<br>
-        P500.00</h5>
-        <p class="card-text">Artist: Pauline Bactad</p>
-        <a href="#" class="btn btn-primary">View Item</a>
-      </div>
-    </div>
+  
+  <?php endwhile; ?>  
   </div>
-  <div class="container d-flex col-lg-4 col-md-6 col-sm-12" style="flex-direction: column; ">
-    <div class="card" style="width: 18rem; ">
-      <img src="./products/shirts/shirt_makeartbabe.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Make Art Babe<br>
-        P500.00</h5>
-        <p class="card-text">Artist: Pauline Bactad</p>
-       <a href="#" class="btn btn-primary">View Item</a>
-      </div>
-    </div>
-    <div class="card" style="width: 18rem; ">
-      <img src="./products/shirts/shirt_eow.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">End of the f**ing World<br>
-        P500.00</h5>
-        <p class="card-text">Artist: Pauline Bactad</p>
-       <a href="#" class="btn btn-primary">View Item</a>
-      </div>
-    </div>
-  </div>
-  <div class="container d-flex col-lg-4 col-md-6 col-sm-12" style="flex-direction: column; ">
-    <div class="card" style="width: 18rem; ">
-      <img src="./products/shirts/shirt_sierra.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Sierra Burgess<br>
-        P500.00</h5>
-        <p class="card-text">Artist: Pauline Bactad</p>
-       <a href="#" class="btn btn-primary">View Item</a>
-      </div>
-    </div>
-    <div class="card" style="width: 18rem; ">
-      <img src="./products/shirts/shirt_top.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Twenty-one Pilots<br>
-        P500.00</h5>
-        <p class="card-text">Artist: Pauline Bactad</p>
-       <a href="#" class="btn btn-primary">View Item</a>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="container d-flex justify-content-center">
-<button class="btn btn-warning">Load More...</button>
-</div>
-
 <!-- CONTACT SECTION -->
   <div class="section section-contact-us text-center">
       <div class="container">
