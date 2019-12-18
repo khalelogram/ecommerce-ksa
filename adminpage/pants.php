@@ -74,32 +74,40 @@ if(isset($_GET['edit'])){
      <h1></h1>
 
 
-<div id="accordion" role="tablist" aria-multiselectable="true" class="card-collapse">
-  <div class="card card-plain">
+<div class="card">
+            <h4 class="card-header">Add Item</h4>
+            <div class="card-body">
+                  <div class="jumbotron">
+                    <div class="card card-plain">
     <div class="card-header" role="tab" id="headingTwo">
-    <a class="collapsed btn btn-primary"  data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-        Add Item Pants<i class="now-ui-icons arrows-1_minimal-down"></i></a>
-
-        
-    </div>
-      <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
-        <div class="card-body">
-          <div class="container ">  
-            
+      <div class="card-body">
+        <div class="container ">  
           <div class="col-sm-10 col-lg-4 mr-auto border p-4">
-                <form method="post" enctype="multipart/form-data">
-                  <div class="form-group">
-                    <label><strong>Upload Files</strong></label>
-                    <div class="custom-file">
-                      <input type="file" name="files[]" multiple class="custom-file-input" id="customFile">
-                      <label class="custom-file-label" for="customFile">Choose file</label>
-                    </div>
+              <form method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                  <label><strong>Upload Files</strong></label>
+                  <div class="custom-file">
+                    <input type="file" name="files[]" multiple class="custom-file-input" id="customFile">
+                    <label class="custom-file-label" for="customFile">Choose file</label>
                   </div>
-                  <div class="form-group">
-                    <button type="button" name="upload" value="upload" id="upload" class="btn btn-block btn-dark"><i class="fa fa-fw fa-upload"></i> Upload</button>
-                  </div>
+
                 </form>
           </div>
+
+                </div>
+                <div class="form-group">
+                  <button type="button" name="upload" value="upload" id="upload" class="btn btn-block btn-dark"><i class="fa fa-fw fa-upload"></i> Upload</button>
+                </div>
+              </form>
+        </div>
+        
+            <select>
+              <option selected="selected" hidden="">Choose Item</option>
+              <option>tshirt</option>
+              <option>pants</option>
+              <option>hats</option>
+              <option>shoes</option>
+            </select>
 
         <form>
           <div class="form-group">
@@ -128,7 +136,7 @@ if(isset($_GET['edit'])){
           <button type="submit" class="btn btn-primary">Add Product</button>
         </form>
 
-     </div>
+      </div>
     </div>
 </div>
        

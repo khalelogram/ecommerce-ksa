@@ -56,7 +56,6 @@ if(isset($_GET['edit'])){
                                 <p class="card-text">Quantity:<?php echo $row['prod_quantity'];?></p>
                                 <div class="row d-flex justify-content-between"><a class="btn btn-primary" href="#collapseTwo?edit=<?php echo $row['prod_id'];?>">Edit Product</a>
                                 <a class="btn btn-primary" href="delete.php?del=<?php echo $row['prod_id'];?>">Remove Product</a></div>
-
                         </div>
                       </div>
                       <?php endwhile; ?>
@@ -65,11 +64,9 @@ if(isset($_GET['edit'])){
             </div>  
         </div>
       </div>
-    </div>
-  <div id="accordion" role="tablist" aria-multiselectable="true" class="card-collapse">
-  <div class="card card-plain">
-    <div class="card-header" role="tab" id="headingTwo">
-    <h4><a class="collapsed btn btn-primary"  data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Add Product</h4></a>
+    </div><h1></h1>
+
+     <h1></h1>
         <?php 
         $typeOfError = "success";
          if($msg == "Failed to Add Product") {
@@ -78,9 +75,13 @@ if(isset($_GET['edit'])){
 
     if($valid) echo "<div class='alert alert-$typeOfError'>$msg</div>";
     ?>
-        <i class="now-ui-icons arrows-1_minimal-down"></i>
-    </div>
-<div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+    <div class="card">
+            <h4 class="card-header">Add Item</h4>
+            <div class="card-body">
+                  <div class="jumbotron">
+                    <div class="card card-plain">
+    <div class="card-header" role="tab" id="headingTwo">
+
       <div class="card-body">
         <div class="container ">  
           <div class="col-sm-10 col-lg-4 mr-auto border p-4">
@@ -119,6 +120,7 @@ if(isset($_GET['edit'])){
               </select>
           </div>
 
+
           <div>
             <h4><label for="exampleFormControlInput1">Price</label></h4>
             <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Enter Price" name="prodprice">
@@ -128,12 +130,24 @@ if(isset($_GET['edit'])){
             <h4><label for="exampleFormControlInput1">Quantity</label></h4>
             <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Enter Quantity" name="prodquant"><br>
           </div>
+
+        <div class="form-check">
+        <label class="form-check-label">
+            <input class="form-check-input" type="checkbox">
+            <span class="form-check-sign"></span>
+              Confirm Add Item
+        </label>
+        </div>
           <button type="submit" class="btn btn-primary" name="submit">Add Product</button>
       </form>
+
+
+          
+
+
       </div>
     </div>
 </div>
-       
 
 
     </div><!-- Main Col END -->

@@ -1,4 +1,5 @@
-
+<?php include('server.php');?>
+<?php include('errors.php');?>
 
 
   <nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="400" style="background-color: #716D6D;">
@@ -121,9 +122,24 @@
         </div>
         <div class="modal-body">
           <form method="post" style="display: flex; flex-direction: column;">
-            Username: <input type="text" name="username" placeholder="Username">
-            Password: <input type="password" name="password" placeholder="***********">
-          </form>
+           
+                <form method="post" action="index.php">
+                  
+                  <?php include('adminpage/registration/errors.php');?>
+                  
+                    <label>Username:</label>
+                    <input type="text" name="username" placeholder="Username">
+                  
+                  
+                    <label>Password:</label>
+                    <input type="password" name="password" placeholder="***********">
+                  
+                  <div class="input-group">
+                    <button type="submit" name="login" class="btn btn-primary btn-sm">Login</button>
+                  
+                 </form>
+              
+          
 
             
     
@@ -131,8 +147,6 @@
           <p class="text-center">Not yet a member? <a href="" data-toggle="modal" data-target="#signupModal">Sign up here.</a></p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-          <button id="submitBtn" type="submit" class="btn btn-warning">Submit</button>
         </div>
       </div>
     </div>
@@ -151,19 +165,49 @@
         
         <div class="modal-body">
           <form method="post" style="display: flex; flex-direction: column;">
-            First Name:<input id="inputName" type="text" name="firstName" placeholder="Your first name here...">
-            Last Name:<input type="text" name="lastName" placeholder="Your last name here...">
-            Username: <input type="text" name="username" placeholder="Username">
-            Password: <input type="password" name="password" placeholder="***********">
-            Email:<input id="inputEmail" type="Email" placeholder="@domain.com">
-            Contact Number: <input id="inputNumber" type="Number" placeholder="09*********">
-            Address: <input type="text" name="address" placeholder="Address">
+                    <?php include('adminpage/registration/errors.php');?>
+                     <!-- <div class="input-group"> -->
+                        <label>Lastname</label>
+                        <input type="text" name="lastname" placeholder="Your last name here..." value="<?php echo $lastname;?>">
+                      <!-- </div> -->
+                      <!-- <div class="input-group"> -->
+                          <label>Firstname</label>
+                          <input type="text" name="firstname" placeholder="Your first name here..." value="<?php echo $lastname;?>">
+                      <!-- </div> -->
+                      <!-- <div class="input-group"> -->
+                          <label>Email</label>
+                          <input type="text" name="email" placeholder="@domain.com" value="<?php echo $email;?>">
+                      <!-- </div> -->
+                      <!-- <div class="input-group"> -->
+                          <label>Contact Number</label>
+                          <input type="text" name="contact_no" placeholder="09*********" value="<?php echo $contact_no;?>">
+                      <!-- </div> -->
+                      <!-- <div class="input-group"> -->
+                          <label>Address</label>
+                          <input type="text" name="address" placeholder="Address" value="<?php echo $address;?>">
+                      <!-- </div> -->
+                      <!-- <div class="input-group"> -->
+                          <label>Username</label>
+                          <input type="text" name="username" placeholder="Username" value="<?php echo $username;?>">
+                      <!-- </div> -->
+                      <!-- <div class="input-group"> -->
+                          <label>Password</label>
+                          <input type="password" name="password_1" placeholder="***********">
+                      <!-- </div> -->
+                      <!-- <div class="input-group"> -->
+                          <label>Confirm Password</label>
+                          <input type="password" name="password_2" placeholder="***********">
+                      <!-- </div> -->
+                      <!-- <div class="input-group"> -->
+                          <button type="submit" name="register" class="btn btn-primary btn-sm">Register</button>
+                      <!-- </div>  -->
+                    <p><a href="index.php" class="btn btn-info btn-sm" >Sign in</a></p>   
+                  </form>
+                </div>
           </form>
         </div>
         
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-          <button id="submitBtn" type="submit" class="btn btn-warning">Register</button>
         </div>
       </div>
     </div>

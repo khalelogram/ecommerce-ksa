@@ -1,33 +1,51 @@
 <?php
 	session_start();
-	$username = "";
+	$lastname = "";
+	$firstname = "";
 	$email = "";
+	$contact_no = "";
+	$address = "";
+	$username = "";
 	$errors = array();
+	$edit_state = false;
 	//connect to the database
-	$db = mysqli_connect('localhost','root', '', 'registration');
+	$db = mysqli_connect('localhost','root', '', 'e-commerce');
 
 
 	//if the register button is clicked
 	if (isset($_POST['register'])) {
 		
-		$username = mysqli_real_escape_string($db,$_POST['username']);
+		$lastname = mysqli_real_escape_string($db,$_POST['lastname']);
+		$firstname = mysqli_real_escape_string($db,$_POST['firstname']);
 		$email = mysqli_real_escape_string($db,$_POST['email']);
+		$contact_no = mysqli_real_escape_string($db,$_POST['contact_no']);
+		$username = mysqli_real_escape_string($db,$_POST['username']);
+		$address = mysqli_real_escape_string($db,$_POST['address']);
 		$password_1 = mysqli_real_escape_string($db,$_POST['password_1']);
 		$password_2 = mysqli_real_escape_string($db,$_POST['password_2']);
 
 		// ensure that form fields are filled properly
-		if (empty($username)) {
-			array_push($errors, "Username is required");	
+		if (empty($lastname)) {
+			array_push($errors, "Lastname is required");	
 		}
-
+		if (empty($firstname)) {
+			array_push($errors, "Firstname is required");	
+		}
 		if (empty($email)) {
 			array_push($errors, "Email is required");
 		}
-
+		if (empty($contact_no)) {
+			array_push($errors, "Contact Number is required");
+		}
+		if (empty($username)) {
+			array_push($errors, "Username is required");	
+		}
+		if (empty($address)) {
+			array_push($errors, "Address is required");	
+		}
 		if (empty($password_1)) {
 			array_push($errors, "Password is required");
 		}
-
 		if ($password_1 != $password_2) {
 			array_push($errors,"The password did not match");
 		}
@@ -35,8 +53,13 @@
 		// if there are no errors,save user to database
 		if(count($errors) == 0){
 			$password = md5($password_1);//encrypt password before storing to in database
-			$sql = "INSERT INTO users (username,email,password) VALUES ('$username','$email','$password')";
-			mysqli_query($db,$sql);
+			$sql = "INSERT INTO users (lastname,firstname,email,contact_no,address,username,password) VALUES 
+			('$lastname','$firstname','$email','$contact_no','$address','$username','$password')";
+			// echo $sql;
+			$result = mysqli_query($db,$sql);
+			if(!$result) {
+				exit("Query Failed:" . mysqli_error($db));
+			}
 		}
 }
 
@@ -62,7 +85,7 @@
 				//log user in
 				$_SESSION['username'] = $username;
 				$_SESSION['success'] = "You are now logged in";
-				header('Location: ../index.php'); //redirect to home page
+				header('Location:../index.php'); //redirect to home page
 			
 			}else{
 				array_push($errors, "The username or password did not match");
@@ -78,7 +101,10 @@
 	if (isset($_GET['logout'])) {
 		session_destroy();
 		unset($_SESSION['username']);
-		header('location:../registration/index.php');
+		header('location:index.php');
 	}
+
+$results = mysqli_query($db, "SELECT * FROM users");
+
 
 ?>
