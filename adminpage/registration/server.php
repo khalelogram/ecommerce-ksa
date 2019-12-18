@@ -9,7 +9,7 @@
 	$errors = array();
 	$edit_state = false;
 	//connect to the database
-	$db = mysqli_connect('localhost','root', '', 'e-commerce');
+	$db = mysqli_connect('localhost','root', '', 'ecommerce_db');
 
 
 	//if the register button is clicked
