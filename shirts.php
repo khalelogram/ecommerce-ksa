@@ -1,7 +1,7 @@
 <?php
 include 'adminpage/inc/db.php';
 
-  $tshirt = "SELECT * FROM `products` WHERE `prod_cat` = 'tshirt'";
+  $tshirt = "SELECT * FROM `products` WHERE `prod_cat` = 'tshirt' LIMIT 4";
 $result2 = mysqli_query($dbconnection, $tshirt);
 
   if(!$result2)
@@ -47,11 +47,11 @@ $result2 = mysqli_query($dbconnection, $tshirt);
   <!-- END HEADER -->
   
   <!-- SHOPPING SECTION -->
-<div class="container d-flex flex-wrap justify-content-around col-12 col-lg-12 col-md-12 col-sm-12">
+<div id="load_data_table" class="container d-flex flex-wrap justify-content-around col-12" style="padding-top: 15px;">
  <?php while ($row = mysqli_fetch_array($result2)): ?>
   
     <div class="card" style="width: 18rem; ">
-      <?php echo '<img src="adminpage/shirts-web/'.$row['prod_img'].'"width="285" height="200" />'; ?>
+      <?php echo '<img src="adminpage/shirts-web/'.$row['prod_img'].'"width="290" height="200" />'; ?>
       <div class="card-body">
         <p class="card-title"><?php echo "<h5>".$row['prod_name']."</h5>";?></p>
         <p class="card-text"><?php echo $row['prod_desc'];?></p>
@@ -62,6 +62,10 @@ $result2 = mysqli_query($dbconnection, $tshirt);
     </div>
   
   <?php endwhile; ?>  
+  </div>
+  <div class="container d-flex justify-content-center" id="remove_row">
+        <div><button type="button" name="btn_more" data-vid="<?php echo $prod_id; ?>" id="btn_more" class="btn btn-primary btn-lg">Load More</button></div>
+        </div>
   </div>
 <!-- CONTACT SECTION -->
   <div class="section section-contact-us text-center">
@@ -142,6 +146,32 @@ $result2 = mysqli_query($dbconnection, $tshirt);
     });
 
   </script>
+  <script>
+   $(document).ready(function(){
+        $(document).on('click', '#btn_more', function(){
+             var last_video_id = $(this).data("vid");
+             $('#btn_more').html("Loading...");
+             $.ajax({
+                  url:"ajax_more.php",
+                  method:"POST",
+                  data:{last_video_id:last_video_id},
+                  dataType:"text",
+                  success:function(data)
+                  {
+                       if(data != '')
+                       {
+                            $('#remove_row').remove();
+                            $('#load_data_table').append(data);
+                       }
+                       else
+                       {
+                            $('#btn_more').html("No Data");
+                       }
+                  }
+             });
+        });
+   });
+</script>
 </body>
 
 </html>
