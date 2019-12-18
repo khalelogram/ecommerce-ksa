@@ -1,15 +1,6 @@
 <?php
 include 'adminpage/inc/db.php';
 include 'readmoreFunction.php';
-
-  $query = "SELECT * FROM products";
-
-  $result = mysqli_query($dbconnection, $query);
-
-  if(!$result)
-  {
-    die(mysqli_error());
-  }
 ?>
 <!DOCTYPE html>
 <html lang="en">

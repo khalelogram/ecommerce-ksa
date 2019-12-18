@@ -1,5 +1,5 @@
 <?php
-	session_start();
+	
 	$lastname = "";
 	$firstname = "";
 	$email = "";
@@ -8,7 +8,7 @@
 	$username = "";
 	$errors = array();
 	//connect to the database
-	$db = mysqli_connect('localhost','root', '', 'e-commerce');
+	$db = mysqli_connect('localhost','root', '', 'ecommerce_db');
 
 
 	//if the register button is clicked
