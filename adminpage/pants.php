@@ -1,28 +1,29 @@
 <?php 
-
-include('inc/header.php'); 
 include 'db.php';
+include 'server-pants.php';
+include('inc/header.php'); 
 include ('inc/functions.php');
+
 
 $pants = "SELECT * FROM `products` WHERE `prod_cat` = 'pants'";
 $result2 = mysqli_query($dbconnection, $pants);
 $valid = false;
 $msg = "";
 
-if(isset($_POST['submit'])){
-  $msg = createProduct();
-  if(strlen($msg) > 0){
-    $valid = true;
-  }else{
-    $valid = false;
-}
-if(isset($_GET['edit'])){
+  if(isset($_GET['edit'])){
     $id = $_GET['edit'];
+    $edit_state = true;
     $rec = mysqli_query($db, "SELECT * FROM products WHERE prod_id=$id");
     $record = mysqli_fetch_array($rec);
-    $id = $record['prod_id'];
+    $prodid = $record['prod_id'];
+    $prodname = $record['prod_name'];
+    $proddesc = $record['prod_desc'];
+    $prodcat = $record['prod_cat'];
+    $prodprice = $record['prod_price'];
+    $prodquant = $record['prod_quantity'];
+    $image = $record['prod_img'];
   }
-}
+
 ?>
 
 <div class="container-fluid p-0">
@@ -34,108 +35,99 @@ if(isset($_GET['edit'])){
     <div class="col">
         
         <h1>
-            COMPANY NAME
+            Welcome to ADMIN Dashboard
             <small class="text-muted">Version 2.1</small>
         </h1>
         
         
         <div class="card">
-            <h4 class="card-header">PANTS</h4>
+            <h4 class="card-header">Category: Pants</h4>
             <div class="card-body">
-                  <div class="jumbotron">
+            <div class="jumbotron">
                     <div class="row d-flex justify-content-around">
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="..." alt="Card image cap">
+                      <?php while ($row = mysqli_fetch_array($result2)): ?>
+                      <div class="card" style="width: 18rem;">
+                        <?php echo '<img src="pants-web/'.$row['prod_img'].'"width="286" height="200" />'; ?>
                         <div class="card-body">
-                          <p class="card-title">
-                                 <?php while ($row = mysqli_fetch_array($result2)): ?>
-                                 <?php echo "<h5>".$row['prod_name']."</h5>";?></p>
-                                  <p class="card-text">Product Code: <?php echo $row['prod_id'];?></p>
-                                  <p class="card-text"><?php echo $row['prod_desc'];?></p>
-                                  <p class="card-text">PHP <?php echo $row['prod_price'];?></p>
-                                  <p class="card-text">Quantity:<?php echo $row['prod_quantity'];?></p>
-                                  <div class="row d-flex justify-content-between"><a class="btn btn-primary" href="#collapseTwo?edit=<?php echo $row['prod_id'];?>">Edit Product</a>
-                                  <a class="btn btn-primary" href="delete.php?del=<?php echo $row['prod_id'];?>">Remove Product</a></div>
-                                  <p class="card-text"><?php endwhile; ?></p>
-                                  
+                                <p class="card-title">
+                                <?php echo "<h5>".$row['prod_name']."</h5>";?></p>
+                                <p class="card-text">Product Code: <?php echo $row['prod_id'];?></p>
+                                <p class="card-text"><?php echo $row['prod_desc'];?></p>
+                                <p class="card-text">PHP <?php echo $row['prod_price'];?></p>
+                                <p class="card-text">Quantity:<?php echo $row['prod_quantity'];?></p>
+                                <table>
+                                <td><a class="btn btn-success" href="pants.php?edit=<?php echo $row['prod_id'];?>">Edit</a></td>
+                                <td><a class="btn btn-danger" href="server-pants.php?del=<?php echo $row['prod_id'];?>">Remove</a></td>
+                                </tr>
+                                </table>
                         </div>
                       </div>
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="..." alt="Card image cap">
-                        <div class="card-body">
-                          <p class="card-title"><p>
-                          
-                        </div>
-                      </div>
+                      <?php endwhile; ?>
+                  <div class = "card">
               </div>
             </div>  
         </div>
       </div>
-     <h1></h1>
-
-
-<div class="card">
-            <h4 class="card-header">Add Item</h4>
-            <div class="card-body">
-                  <div class="jumbotron">
-                    <div class="card card-plain">
+    </div>
+  <div id="accordion" role="tablist" aria-multiselectable="true" class="card-collapse">
+  <div class="card card-plain">
     <div class="card-header" role="tab" id="headingTwo">
+    <h4>Add/Update Product</h4></a>
+        <i class="now-ui-icons arrows-1_minimal-down"></i>
+    </div>
+<div role="tabpanel" aria-labelledby="headingTwo">
       <div class="card-body">
         <div class="container ">  
           <div class="col-sm-10 col-lg-4 mr-auto border p-4">
-              <form method="post" enctype="multipart/form-data">
-                <div class="form-group">
+                <form method="POST" action="server-pants.php" enctype="multipart/form-data">
+                <div>
                   <label><strong>Upload Files</strong></label>
                   <div class="custom-file">
-                    <input type="file" name="files[]" multiple class="custom-file-input" id="customFile">
+                    <input type="file" name="image" multiple class="custom-file-input" id="customFile" value="">
                     <label class="custom-file-label" for="customFile">Choose file</label>
                   </div>
-
-                </form>
+                </div>
+          </div>
+          <div>
+            <div>
+            <input type="number" class="form-control" id="exampleFormControlInput1" hidden ="hidden" placeholder="Enter Product Code" name="prodid" value="<?php echo $prodid; ?>">
           </div>
 
-                </div>
-                <div class="form-group">
-                  <button type="button" name="upload" value="upload" id="upload" class="btn btn-block btn-dark"><i class="fa fa-fw fa-upload"></i> Upload</button>
-                </div>
-              </form>
-        </div>
-        
-            <select>
-              <option selected="selected" hidden="">Choose Item</option>
-              <option>tshirt</option>
-              <option>pants</option>
-              <option>hats</option>
-              <option>shoes</option>
-            </select>
-
-        <form>
-          <div class="form-group">
-            <h4><label for="exampleFormControlInput1">Title</label></h4>
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Title of Product">
+            <h4><label for="exampleFormControlInput1">Product Name</label></h4>
+            <input type="text" class="form-control" name="prodname" placeholder="Enter Product Name" autocomplete="off" value="<?php echo $prodname; ?>">
           </div>
           
-          <div class="form-group">
-            <h4><label for="exampleFormControlTextarea1">Description of Product</label></h4>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Enter Item Description"></textarea>
+          <div>
+            <h4><label for="exampleFormControlTextarea1">Description</label></h4>
+            <textarea class="form-control" name= "proddesc" id="exampleFormControlTextarea1" rows="3" placeholder="<?php echo $proddesc; ?>"></textarea>
           </div>
 
-          <div class="form-group">
+          <div>
+            <h4><label for="exampleFormControlInput1">Category</label></h4>
+            <select name="prodcat" value="<?php echo $prodcat; ?>">
+              <option value="tshirt">T-shirt</option>
+              <option value="pants">Pants</option>
+              <option value="hats">Hats</option>
+              <option value="shoes">Shoes</option>
+            </select>
+          </div>
+
+          <div>
             <h4><label for="exampleFormControlInput1">Price</label></h4>
-            <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Enter Price">
+            <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Enter Price" name="prodprice" value="<?php echo $prodprice; ?>">
           </div>
 
-        <div class="form-check">
-        <label class="form-check-label">
-            <input class="form-check-input" type="checkbox">
-            <span class="form-check-sign"></span>
-              Confirm Add Item
-        </label>
-        </div>
-
-          <button type="submit" class="btn btn-primary">Add Product</button>
-        </form>
-
+          <div>
+            <h4><label for="exampleFormControlInput1">Quantity</label></h4>
+            <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Enter Quantity" name="prodquant" value="<?php echo $prodquant;?>"><br>
+          </div>
+          <?php if($edit_state == false): ?>
+        <button type="submit" name="save" class="btn btn-primary"> Add Product </button>
+        <?php else: ?>
+        <button type="submit" name="update" class="btn btn-primary"> Edit Product </button>
+        <button type="cancel" name="cancel" class="btn btn-primary"> Cancel </button>
+        <?php endif ?>
+      </form>
       </div>
     </div>
 </div>
